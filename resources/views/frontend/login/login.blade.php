@@ -34,8 +34,8 @@
                                 
                             </div>
 
-                            <button type="submit" class="submit-btn btn btn-primary m-2">Login</button>
-                            <a href="{{URL::to('/signup')}}" class="submit-btn btn btn-success m-2" >Create an Account</a>
+                            <button type="submit" class=" btn btn-primary m-2 login-btn">Login</button>
+                            <a href="{{URL::to('/signup')}}" class="submit-btn btn btn-success m-2 login-btn" >Create an Account</a>
                             <div class="form-group">
                                 {{-- <a href="#" class="forgot-password">Forgot your password?</a> --}}
                             </div>

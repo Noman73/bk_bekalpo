@@ -11,6 +11,11 @@ $('#keyword').keypress(function(event){
 }); 
 $('.submit-btn').click(function(event){
         event.preventDefault();
+            x=this.classList.contains('login-btn');
+            if(x){
+                window.location=$(this).attr('href');
+                return false;
+            }
             params=$('#keyword').val();
             window.location=url+"/ads?"+'keyword='+params;
 }); 
