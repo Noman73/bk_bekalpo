@@ -20,22 +20,24 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table table-sm table-bordered text-center data-table">
-                    <thead>
-                        <tr>
-                            <th>SL</th>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Sub Category</th>
-                            <th>Division</th>
-                            <th>Location</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered text-center data-table">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Sub Category</th>
+                                <th>Division</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
                 {{-- modal start --}}
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
