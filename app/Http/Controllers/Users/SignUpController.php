@@ -33,7 +33,7 @@ class SignUpController extends Controller
         $validator=Validator::make($request->all(),[
             // 'username'=>"|max:200|min:1|unique:users,username",
             'name'=>"required|max:200|min:1",
-            'email'=>"required|max:200|min:1",
+            'email'=>"required|max:200|min:1|unique:users,email",
             'phone'=>"required|max:200|min:1",
             'cities'=>"required|max:200|min:1",
             'areas'=>"required|max:200|min:1",
