@@ -89,7 +89,7 @@ class SignUpController extends Controller
     {
         // return response()->json($request->all());
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name'=>"required|max:200|min:1|unique:users,email,".auth()->user()->id,
             'phone'=>"required|max:200|min:1",
             'cities'=>"required|max:200|min:1",
             'areas'=>"required|max:200|min:1",
