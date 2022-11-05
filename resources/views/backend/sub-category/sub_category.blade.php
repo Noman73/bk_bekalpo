@@ -26,7 +26,8 @@
                         <tr>
                             <th>SL</th>
                             <th>Category</th>
-                            <th>Name</th>
+                            <th>Name en</th>
+                            <th>Name bn</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -50,7 +51,7 @@
                                     <select type="text" class="default-select form-control wide" id="category" name="category">
                                         <option value="">--SELECT--</option>
                                         @foreach($category as $cat)
-                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                        <option value="{{$cat->id}}">{{$cat->name_en}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback" id="category_msg">
@@ -58,9 +59,15 @@
                                 </div>
                                 <br>
                                 <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Sub Category :</label>
-                                    <input type="text" class="form-control" id="sub_category_name" name="sub_category_name" placeholder="Enter Sub Category Name ">
-                                    <div class="invalid-feedback" id="sub_category_name_msg">
+                                    <label for="recipient-name" class="col-form-label">Sub Category English:</label>
+                                    <input type="text" class="form-control" id="sub_category_name_en" name="sub_category_name_en" placeholder="Enter Sub Category Name English">
+                                    <div class="invalid-feedback" id="sub_category_name_en_msg">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Sub Category Bangla:</label>
+                                    <input type="text" class="form-control" id="sub_category_name_bn" name="sub_category_name_bn" placeholder="Enter Sub Category Name Bangla">
+                                    <div class="invalid-feedback" id="sub_category_name_bn_msg">
                                     </div>
                                 </div>
                             </div> 

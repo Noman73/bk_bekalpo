@@ -25,7 +25,8 @@
                     <thead>
                         <tr>
                             <th>SL</th>
-                            <th>Name</th>
+                            <th>Name en</th>
+                            <th>Name bn</th>
                             <th>Icon</th>
                             <th>Serial</th>
                             <th>Action</th>
@@ -46,8 +47,14 @@
                           <form>
                             <input type="hidden" name='id' id="id"> 
                             <div class="mb-3">
-                              <label for="recipient-name" class="col-form-label">Name :</label>
-                              <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category Name ">
+                              <label for="recipient-name" class="col-form-label">Name en:</label>
+                              <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter Category English Name ">
+                              <div class="invalid-feedback" id="name_msg">
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="recipient-name" class="col-form-label">Name bn:</label>
+                              <input type="text" class="form-control" id="name_bn" name="name_bn" placeholder="Enter Category Bangla Name ">
                               <div class="invalid-feedback" id="name_msg">
                               </div>
                             </div>

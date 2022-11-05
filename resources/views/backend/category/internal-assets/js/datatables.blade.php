@@ -13,8 +13,12 @@
         searchable:false
       },
       {
-        data:'name',
-        name:'name',
+        data:'name_en',
+        name:'name_en',
+      },
+	  {
+        data:'name_bn',
+        name:'name_bn',
       },
 	  {
         data:'icon',
@@ -33,13 +37,15 @@
 
 function formRequest(){
     $('#name').removeClass('is-invalid');
-    let name=$('#name').val();
+    let name_en=$('#name_en').val();
+    let name_bn=$('#name_bn').val();
     let serial=$('#serial').val();
     let icon=$('form select').val();
     let id=$('#id').val();
     console.log(icon)
     let formData= new FormData();
-    formData.append('name',name);
+    formData.append('name_en',name_en);
+    formData.append('name_bn',name_bn);
     formData.append('serial',serial);
     formData.append('icon',icon);
     if(id!=''){

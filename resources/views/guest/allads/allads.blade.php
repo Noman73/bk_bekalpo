@@ -166,8 +166,11 @@ bekalpo.com | Easy Buy, Easy Sell
                                                 <div class="form-group">
                                                     <select onChange="categories(this)" class="form-control" name="" id="category">
                                                         <option value="">-Select an Option-</option>
+                                                        @php
+                                                        $n='name_'.$locale;
+                                                        @endphp
                                                         @foreach($category as $cat)
-                                                        <option value="{{$cat->id}}">{{$cat->name}}({{$cat->post_count_count}})</option>
+                                                        <option value="{{$cat->id}}">{{$cat->$n}}({{$cat->post_count_count}})</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

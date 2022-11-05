@@ -19,8 +19,12 @@
             name:'cat_name',
           },
           {
-            data:'name',
-            name:'name',
+            data:'name_en',
+            name:'name_en',
+          },
+          {
+            data:'name_bn',
+            name:'name_bn',
           },
           {
             data:'action',
@@ -31,11 +35,13 @@
     
    window.formRequest= function(){
         $('#name').removeClass('is-invalid');
-        let name=$('#sub_category_name').val();
+        let name_en=$('#sub_category_name_en').val();
+        let name_bn=$('#sub_category_name_bn').val();
         let category=$('#category').val();
         let id=$('#id').val();
         let formData= new FormData();
-        formData.append('sub_category_name',name);
+        formData.append('sub_category_name_en',name_en);
+        formData.append('sub_category_name_bn',name_bn);
         formData.append('category',category);
 
         $('#exampleModalLabel').text('Update Sub Category');
@@ -88,13 +94,17 @@
         .then((data)=>{
           var editKeys=Object.keys(data.data);
           editKeys.forEach(function(key){
-            if(key=='name'){
-              $('#'+'sub_category_name').val(data.data[key]);
+            if(key=='name_en'){
+              $('#'+'sub_category_name_en').val(data.data[key]);
+            }
+            if(key=='name_bn'){
+              $('#'+'sub_category_name_bn').val(data.data[key]);
             }
             if(key=='category_id'){
+              console.log(data.data[key])
               $('#category').val(data.data[key]).niceSelect('update');
             }
-             $('#'+key).val(data.data[key]);
+            //  $('#'+key).val(data.data[key]);
              $('#exampleModal').modal('show');
              $('#id').val(data.data.id);
           })

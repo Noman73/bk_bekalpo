@@ -19,7 +19,7 @@ use App\Models\Contact;
 use App\Models\Faq;
 class GuestViewController extends Controller
 {
-    public function allAds($locale="en"){
+    public function allAds($locale="bn"){
         // return "dfgdfd";
         $category=Category::with(['subcategory'])->withCount('postCount')->orderBy('post_count_count','desc')->get();
         $division=Division::with(['location'])->get();

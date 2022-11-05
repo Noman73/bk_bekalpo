@@ -46,7 +46,7 @@ class SubCategoryController extends Controller
                     return $button;
               })
               ->addColumn('cat_name',function($get){
-                return $get->category->name;
+                return $get->category->name_en;
               })
           ->rawColumns(['action'])->make(true);
         }
@@ -63,14 +63,16 @@ class SubCategoryController extends Controller
     {
         // return response()->json([$request->all()]);
         $validator=Validator::make($request->all(),[
-            'sub_category_name'=>"required|max:200|min:1",
+            'sub_category_name_en'=>"required|max:200|min:1",
+            'sub_category_name_bn'=>"required|max:200|min:1",
             'category'=>"required|max:20|min:1",
         ]);
 
         if($validator->passes()){
             $category=new SubCategory;
             $category->category_id=$request->category;
-            $category->name=$request->sub_category_name;
+            $category->name_en=$request->sub_category_name_en;
+            $category->name_bn=$request->sub_category_name_bn;
             $category->status=1;
             $category->save();
             if ($category) {
@@ -111,15 +113,18 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request->all();
         $validator=Validator::make($request->all(),[
-            'sub_category_name'=>"required|max:200|min:1",
+            'sub_category_name_en'=>"required|max:200|min:1",
+            'sub_category_name_bn'=>"required|max:200|min:1",
             'category'=>"required|max:20|min:1",
         ]);
 
         if($validator->passes()){
             $category=SubCategory::find($id);
             $category->category_id=$request->category;
-            $category->name=$request->sub_category_name;
+            $category->name_en=$request->sub_category_name_en;
+            $category->name_bn=$request->sub_category_name_bn;
             $category->status=1;
             $category->save();
             if ($category) {
