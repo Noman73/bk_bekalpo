@@ -17,8 +17,12 @@
           name:'division',
         },
         {
-          data:'name',
-          name:'name',
+          data:'name_en',
+          name:'name_en',
+        },
+        {
+          data:'name_bn',
+          name:'name_bn',
         },
         {
           data:'city',
@@ -32,8 +36,9 @@
   });
   
   function formRequest(){
-      $('#name').removeClass('is-invalid');
-      let name=$('#name').val();
+      $('#name_en').removeClass('is-invalid');
+      let name_en=$('#name_en').val();
+      let name_bn=$('#name_bn').val();
       let cities=$('#cities').val();
       let city=$('#city').prop("checked");
       if(city){
@@ -44,7 +49,8 @@
       console.log(city);
       let id=$('#id').val();
       let formData= new FormData();
-      formData.append('name',name);
+      formData.append('name_en',name_en);
+      formData.append('name_bn',name_bn);
       formData.append('cities',cities);
       formData.append('city',city);
       if(id!=''){

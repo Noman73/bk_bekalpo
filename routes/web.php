@@ -58,26 +58,28 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function ($locale="en") {
-    return view('guest.welcome',compact('locale'));
-});
+
 
 Auth::routes(['verify'=>true]);
 // Auth::routes(['verify'=>true]);
 Route::get('/test',[TestController::class,'Test']);
 Route::post('/testfile',[TestController::class,'TestFile']);
 Route::get('/admin/home', [HomeController::class, 'index'])->name('home');
-Route::get('/get-location-modal', [LocationController::class, 'getModal']);
+
 Route::get('/home',function($locale="en"){
     return view('guest.welcome',compact('locale'));
 });
 Route::get('/admin/get-brand', [HomeController::class, 'index'])->name('home');
 Route::post('/sendEmail/{user_id}',[EmailController::class,'send']);
-Route::name('users.')->group(function () {
+Route::name('users.')->prefix("{locale?}")->middleware('setLocale')->group(function () {
+    Route::get('/', function ($locale="en"){
+        return view('guest.welcome',compact('locale'));
+    });
+    Route::get('/get-location-modal', [LocationController::class, 'getModal']);
     Route::resource('/post',PostController::class)->middleware(['auth','verified']);
     Route::post('/my_post_action/{id}',[PostController::class,'postAction'])->name('my_post_action')->middleware('auth');
     Route::resource('/category',CategoryController::class);
-    Route::resource('/sub-category',PostController::class);
+    // Route::resource('/sub-category',PostController::class);
     Route::get('/get-subcategory/{id}',[PostController::class,'getSubCategory']);
     Route::get('/field-permission/{id}',[PostController::class,'getFieldPermission']);
     Route::get('/get-location/{id}',[PostController::class,'getLocation']);

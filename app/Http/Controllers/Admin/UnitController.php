@@ -46,7 +46,7 @@ class UnitController extends Controller
                     return $button;
               })
               ->addColumn('sub_cat',function($get){
-                return $get->subcategory->name;
+                return $get->subcategory->name_en;
               })
           ->rawColumns(['action'])->make(true);
         }
@@ -62,13 +62,15 @@ class UnitController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1|unique:units,name_en",
+            'name_bn'=>"required|max:200|min:1|unique:units,name_bn",
             'subcategory'=>"required|max:200|min:1",
         ]);
 
         if($validator->passes()){
             $unit=new Unit;
-            $unit->name=$request->name;
+            $unit->name_en=$request->name_en;
+            $unit->name_bn=$request->name_bn;
             $unit->subcategory_id=$request->subcategory;
             $unit->status=1;
             $unit->author_id=auth()->user()->id;

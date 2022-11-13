@@ -27,7 +27,7 @@ class GuestViewController extends Controller
         return view('guest.allads.allads',compact('category','division','locale'));
     }
 
-    public function singleAd($slug,$id){
+    public function singleAd($locale='en',$slug,$id){
         
        $post=Post::with('permission','division','district','brand','model','images','user','bodytype','unittype')->where('id',$id)->where('status',2)->first();
 

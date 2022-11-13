@@ -17,8 +17,16 @@
         name:'category',
       },
       {
-        data:'name',
-        name:'name',
+        data:'subcategory',
+        name:'subcategory',
+      },
+      {
+        data:'name_en',
+        name:'name_en',
+      },
+      {
+        data:'name_bn',
+        name:'name_bn',
       },
       {
         data:'action',
@@ -29,11 +37,13 @@
 
 window.formRequest= function(){
     $('#name').removeClass('is-invalid');
-    let name=$('#name').val();
+    let name_en=$('#name_en').val();
+    let name_bn=$('#name_bn').val();
     let category=$('#category').val();
     let id=$('#id').val();
     let formData= new FormData();
-    formData.append('name',name);
+    formData.append('name_en',name_en);
+    formData.append('name_bn',name_bn);
     formData.append('category',category);
     $('#exampleModalLabel').text('Update Brand');
     if(id!=''){
@@ -85,10 +95,11 @@ $(document).delegate(".editRow", "click", function(){
     .then((data)=>{
       var editKeys=Object.keys(data.data);
       editKeys.forEach(function(key){
-        if(key=='name'){
-          $('#'+'name').val(data.data[key]);
-        }
-        if(key=='category_id'){
+        // if(key=='name'){
+        //   $('#'+'name').val(data.data[key]);
+        // }
+        console.log(key)
+        if(key=='subcategory_id'){
           $('#category').val(data.data[key]).niceSelect('update');
         }
          $('#'+key).val(data.data[key]);

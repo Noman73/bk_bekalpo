@@ -16,12 +16,12 @@ bekalpo.com | Easy Buy, Easy Sell
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumbs-area">
-                    <h1>Post an Ad</h1>
+                    <h1>@lang('lang.pages.post.banner_text')</h1>
                     <ul>
                         <li>
-                            <a href="index-2.html">Home</a>
+                            <a href="index-2.html">@lang('lang.pages.allads.header.home')</a>
                         </li>
-                        <li>Post an Ad</li>
+                        <li>@lang('lang.pages.post.banner_text')</li>
                     </ul>
                 </div>
             </div>
@@ -41,21 +41,21 @@ bekalpo.com | Easy Buy, Easy Sell
                     <div class="post-section post-type">
                         <div class="post-ad-title">
                             <i class="fa fa-tags"></i>
-                            <h3 class="item-title">Select Type</h3>
+                            <h3 class="item-title">@lang('lang.pages.post.select_type')</h3>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Ad Type
+                                    @lang('lang.pages.post.fields.select_type.ad_type')
                                     <span>*</span>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select class="form-control select-box" name="ad_type" id="ad_type">
-                                        <option value="">--Select Type--</option>
-                                        <option value="1">Sell</option>
-                                        <option value="2">Buy</option>
+                                        <option value="">--@lang('lang.pages.allads.select_an_option')--</option>
+                                        <option value="1">@lang('lang.pages.allads.sell')</option>
+                                        <option value="2">@lang('lang.pages.allads.buy')</option>
                                     </select>
                                     <div class="invalid-feedback" id="ad_type_msg">
                                     </div>
@@ -67,16 +67,19 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row" id="init_division">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Cities
+                                    @lang('lang.pages.post.fields.select_type.cities')
                                     <span>*</span>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select class="form-control select-box" id="cities">
-                                        <option value="">- Select an Option -</option>
+                                        <option value=""> - @lang('lang.pages.allads.select_an_option') -</option>
+                                        @php
+                                        $lang_name=('name_'.app()->getLocale());
+                                        @endphp
                                         @foreach($division as $div)
-                                        <option value="{{$div->id}}">{{$div->name}}</option>
+                                        <option value="{{$div->id}}">{{$div->$lang_name}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback" id="cities_msg">
@@ -87,14 +90,14 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row" id="init_location">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Areas
+                                    @lang('lang.pages.post.fields.select_type.areas')
                                     <span>*</span>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select class="form-control select-box" id="areas">
-                                        <option value="">- Select an Option -</option>
+                                        <option value="">- @lang('lang.pages.allads.select_an_option') -</option>
                                     </select>
                                     <div class="invalid-feedback" id="areas_msg">
                                     </div>
@@ -103,21 +106,21 @@ bekalpo.com | Easy Buy, Easy Sell
                         </div>
                         <div class="post-ad-title">
                             <i class="fa fa-tags"></i>
-                            <h3 class="item-title">Select Category</h3>
+                            <h3 class="item-title">@lang('lang.pages.post.fields.select_category.title')</h3>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Category
+                                    @lang('lang.pages.post.fields.select_category.category')
                                     <span>*</span>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select class="form-control select-box" name="category" id="category">
-                                        <option value="">--SELECT--</option>
+                                        <option value="">--@lang('lang.pages.allads.select_an_option')--</option>
                                         @foreach($category as $cat)
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                            <option value="{{$cat->id}}">{{$cat->$lang_name}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback" id="category_msg">
@@ -128,7 +131,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row d-none" id="init_sub_category">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Sub Category
+                                    @lang('lang.pages.post.fields.select_category.sub_category')
                                     <span>*</span>
                                 </label>
                             </div>
@@ -146,12 +149,12 @@ bekalpo.com | Easy Buy, Easy Sell
                     <div class="post-section post-information d-none">
                         <div class="post-ad-title">
                             <i class="fa fa-folder-open"></i>
-                            <h3 class="item-title">Product Information</h3>
+                            <h3 class="item-title">@lang('lang.pages.post.fields.product_information.title')</h3>
                         </div>
                         <div class="row" id="init_title">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Title
+                                    @lang('lang.pages.post.fields.product_information.ad_title')
                                     <span>*</span>
                                 </label>
                             </div>
@@ -168,7 +171,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Description
+                                    @lang('lang.pages.post.fields.product_information.description')
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -182,7 +185,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row" id="init_price">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Price
+                                    {{__('lang.pages.post.fields.product_information.price')}}
                                     <span>*</span>
                                 </label>
                             </div>
@@ -297,7 +300,9 @@ bekalpo.com | Easy Buy, Easy Sell
 @endsection
 @section('script')
 
-<script src="{{asset('storage/frontend/custom/js/form-generate.js')}}"></script>
+
+@include('frontend.post.internal-assets.js.custom.form-generate')
+{{-- <script src="{{asset('storage/frontend/custom/js/form-generate.js')}}"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('storage/dependencies/image-uploader/dist/image-uploader.min.js')}}"></script>
 <script src="{{asset('storage/dependencies/countdown/countdown.js')}}"></script>

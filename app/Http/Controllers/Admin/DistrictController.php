@@ -44,7 +44,7 @@ class DistrictController extends Controller
             return $button;
           })
           ->addColumn('division',function($get){
-            return $get->division->name;
+            return $get->division->name_en;
         })
         ->addColumn('city',function($get){
             return ($get->city==1 ? "City": "Area");
@@ -63,15 +63,17 @@ class DistrictController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
-        'cities'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1",
+            'name_bn'=>"required|max:200|min:1",
+            'cities'=>"required|max:200|min:1",
             'city'=>"nullable|max:200|min:1",
         ]);
 
         if($validator->passes()){
             $district=new District;
             $district->division_id=$request->cities;
-            $district->name=$request->name;
+            $district->name_en=$request->name_en;
+            $district->name_bn=$request->name_bn;
             $district->city=$request->city;
             $district->author_id=auth()->user()->id;
             $district->status=1;
@@ -115,7 +117,8 @@ class DistrictController extends Controller
     public function update(Request $request, $id)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1|unique:districts,name_en,".$id,
+            'name_bn'=>"required|max:200|min:1|unique:districts,name_en,".$id,
             'cities'=>"required|max:200|min:1",
             'city'=>"nullable|max:200|min:1",
         ]);
@@ -123,7 +126,8 @@ class DistrictController extends Controller
         if($validator->passes()){
             $district=District::find($id);
             $district->division_id=$request->cities;
-            $district->name=$request->name;
+            $district->name_en=$request->name_en;
+            $district->name_bn=$request->name_bn;
             $district->city=$request->city;
             $district->author_id=auth()->user()->id;
             $district->status=1;

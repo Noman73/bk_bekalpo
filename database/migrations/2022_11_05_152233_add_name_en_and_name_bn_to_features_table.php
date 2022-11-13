@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNameBnAndChangeNameToNameEn extends Migration
+class AddNameEnAndNameBnToFeaturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddNameBnAndChangeNameToNameEn extends Migration
      */
     public function up()
     {
-        Schema::table('brands', function (Blueprint $table) {
+        Schema::table('features', function (Blueprint $table) {
             $table->renameColumn('name','name_en');
             $table->string('name_bn')->after('name')->nullable();
         });
@@ -26,7 +26,7 @@ class AddNameBnAndChangeNameToNameEn extends Migration
      */
     public function down()
     {
-        Schema::table('brands', function (Blueprint $table) {
+        Schema::table('features', function (Blueprint $table) {
             $table->renameColumn('name_en','name');
             $table->dropColumn('name_bn');
         });

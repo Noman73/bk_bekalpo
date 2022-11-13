@@ -16,12 +16,15 @@
           <ul class="list-group list-group-flush text-color">
             <span class="m-3 text-dark">Cities</span>
             <li onclick="allOfBangladesh()" class="list-group-item color">All of Bangladesh </li>
+            @php
+            $lang_name="name_".app()->getLocale();
+            @endphp
             @foreach($division as $div)
-            <li onclick="cities({{$div->id}},'{{$div->name}}')" class="list-group-item color">{{$div->name}} <i class="fa fa-angle-right mt-1 float-right"></i></li>
+            <li onclick="cities({{$div->id}},'{{$div->$lang_name}}')" class="list-group-item color">{{$div->$lang_name}} <i class="fa fa-angle-right mt-1 float-right"></i></li>
             @endforeach
             <span class="m-3 text-dark">Divisions</span>
             @foreach($division as $div)
-            <li onclick="areas({{$div->id}},'{{$div->name}}')" class="list-group-item color">{{$div->name}} Division <i class="fa fa-angle-right mt-1 float-right"></i></li>
+            <li onclick="areas({{$div->id}},'{{$div->$lang_name}}')" class="list-group-item color">{{$div->$lang_name}} Division <i class="fa fa-angle-right mt-1 float-right"></i></li>
             @endforeach
           </ul>
         </div>

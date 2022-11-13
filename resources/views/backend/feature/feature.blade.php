@@ -26,7 +26,8 @@
                         <tr>
                             <th>SL</th>
                             <th>Sub Category</th>
-                            <th>Name</th>
+                            <th>Name en</th>
+                            <th>Name bn</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -50,7 +51,7 @@
                                     <select type="text" class="default-select form-control wide" id="subcategory" name="subcategory">
                                         <option value="">--SELECT--</option>
                                         @foreach($category as $cat)
-                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                        <option value="{{$cat->id}}">{{$cat->name_en}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback" id="subcategory_msg">
@@ -58,8 +59,14 @@
                                 </div>
                                 <br>
                                 <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Name :</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name ">
+                                    <label for="recipient-name" class="col-form-label">Name en:</label>
+                                    <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter Name ">
+                                    <div class="invalid-feedback" id="name_msg">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Name bn:</label>
+                                    <input type="text" class="form-control" id="name_bn" name="name_bn" placeholder="Enter Name ">
                                     <div class="invalid-feedback" id="name_msg">
                                     </div>
                                 </div>

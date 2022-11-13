@@ -19,8 +19,12 @@
         name:'sub_cat',
       },
       {
-        data:'name',
-        name:'name',
+        data:'name_en',
+        name:'name_en',
+      },
+      {
+        data:'name_bn',
+        name:'name_bn',
       },
       {
         data:'action',
@@ -31,11 +35,13 @@
 
 window.formRequest= function(){
     $('#name').removeClass('is-invalid');
-    let name=$('#name').val();
+    let name_en=$('#name_en').val();
+    let name_bn=$('#name_bn').val();
     let subcategory=$('#subcategory').val();
     let id=$('#id').val();
     let formData= new FormData();
-    formData.append('name',name);
+    formData.append('name_en',name_en);
+    formData.append('name_bn',name_bn);
     formData.append('subcategory',subcategory);
     $('#exampleModalLabel').text('Update Feature');
     if(id!=''){

@@ -1,3 +1,8 @@
+@php
+use App\Http\Traits\Number;
+$lang_name="name_".app()->getLocale();
+@endphp
+
 <section class="section-padding-top-heading">
     <div class="container">
         <div class="heading-layout1">
@@ -11,13 +16,13 @@
             @foreach($category as $cat)
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="category-box-layout1">
-                    <a href="{{URL::to('/ads?category='.$cat->id)}}">
+                    <a href="{{URL::to(app()->getLocale().'/ads?category='.$cat->id)}}">
                         <div class="item-icon">
                             <i class="fa {{explode('|',$cat->icon)[0]}}"></i>
                         </div>
                         <div class="item-content">
-                            <h3 class="item-title">{{$cat->name}}</h3>
-                            <div class="item-count">{{$cat->postCount->count()}} {{__('lang.ad')}}</div>
+                            <h3 class="item-title">{{$cat->$lang_name}}</h3>
+                            <div class="item-count">{{Number::num($cat->postCount->count(),app()->getLocale())}} {{__('lang.ad')}}</div>
                         </div>
                     </a>
                 </div>

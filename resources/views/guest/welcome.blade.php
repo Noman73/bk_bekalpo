@@ -1,4 +1,4 @@
-{{App::setLocale('bn')}}
+{{-- {{App::setLocale($locale)}} --}}
 @extends('layouts.guest.master')
 @push('title')
 bekalpo.com | Easy Buy, Easy Sell 

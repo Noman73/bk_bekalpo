@@ -6,14 +6,15 @@
             $('#init_sub_category').addClass('d-none')
             $('.post-information').addClass('d-none')
         }
-        $.get("{{URL::to('/get-subcategory')}}/"+category_id)
+        $.get("{{URL::to(app()->getLocale().'/get-subcategory')}}/"+category_id)
         .then(response=>{
             if(response.length>0){
+
                 $('#init_sub_category').removeClass('d-none')
             }
-            html="<option value=''>--SELECT--</option>"
+            html="<option value=''>--{{__('lang.pages.allads.select_an_option')}}--</option>"
             response.forEach(function(d){
-            html+="<option value='"+d.id+"'>"+d.name+"</option>"
+            html+="<option value='"+d.id+"'>"+d['name_'+lang]+"</option>"
             })
             $('#sub_category').html(html);
         })
@@ -22,7 +23,7 @@
     $(document).on('change','#sub_category',function(){
         let subCatId=$(this).val();
         if(subCatId!=''){
-            $.get("{{URL::to('/field-permission')}}/"+subCatId)
+            $.get("{{URL::to(app()->getLocale().'/field-permission')}}/"+subCatId)
             .then(response=>{
                 let arr=[];
                 response.forEach(function(d){
@@ -38,11 +39,11 @@
     $(document).on('change','#cities',function(){
         let division=$(this).val();
         if(division!=''){
-            $.get("{{URL::to('/get-location')}}/"+division)
+            $.get("{{URL::to(app()->getLocale().'/get-location')}}/"+division)
             .then(response=>{
-                let location="<option value=''>- Select an Option -</option>";
+                let location="<option value=''>- {{__('lang.pages.allads.select_an_option')}} -</option>";
                 response.forEach(function(d){
-                    location+="<option value='"+d.id+"'>"+d.name+"</option>";
+                    location+="<option value='"+d.id+"'>"+d['name_'+lang]+"</option>";
                 })
                 $('#areas').html(location);
             })
@@ -51,9 +52,9 @@
     $(document).on('change','#brand',function(){
         let brand=$(this).val();
         if(brand!=''){
-            $.get("{{URL::to('/get-model')}}/"+brand)
+            $.get("{{URL::to(app()->getLocale().'/get-model')}}/"+brand)
             .then(response=>{
-                let model="<option value=''>- Select an Option -</option>";
+                let model="<option value=''>- {{__('lang.pages.allads.select_an_option')}} -</option>";
                 response.forEach(function(d){
                     model+="<option value='"+d.id+"'>"+d.name+"</option>";
                 })

@@ -471,59 +471,60 @@ class PostController extends Controller
             }
     }
 
-    public function getSubCategory($id)
+    public function getSubCategory($locale='en',$id)
     {
         return response()->json(SubCategory::where('category_id',$id)->withCount('posts')->orderBy('posts_count','desc')->get());
     }
-    public function getFieldPermission($id)
+    public function getFieldPermission($locale='en',$id)
     {
         return response()->json(FieldPermission::where('subcategory_id',$id)->where('status',1)->get());
     }
-    public function getLocation($id)
+    public function getLocation($locale='en',$id)
     {
         return response()->json(District::where('division_id',$id)->get());
     }
-    public function getCityLocation($id)
+    public function getCityLocation($locale='en',$id)
     {
         return response()->json(District::where('division_id',$id)->where('city',1)->get());
     }
-    public function getAreaLocation($id)
+    public function getAreaLocation($locale='en',$id)
     {
         return response()->json(District::where('division_id',$id)->where('city',null)->get());
     }
-    public function getBrand($id)
+    public function getBrand($locale='en',$id)
     {
+        
         // dd(Brand::where('category_id',$id)->withCount('posts')->orderBy('posts_count','desc')->get());
         return response()->json(Brand::where('subcategory_id',$id)->withCount('posts')->orderBy('posts_count','desc')->get());
     }
-    public function getBodyType($id)
+    public function getBodyType($locale='en',$id)
     {
         return response()->json(BodyType::where('subcategory_id',$id)->get());
     }
-    public function getFuelType($id)
+    public function getFuelType($locale='en',$id)
     {
         return response()->json(FuelType::where('subcategory_id',$id)->get());
     }
-    public function getUnitType($id)
+    public function getUnitType($locale='en',$id)
     {
         return response()->json(Unit::where('subcategory_id',$id)->get());
     }
-    public function getModel($id){
+    public function getModel($locale='en',$id){
         return response()->json(BrandModel::where('brand_id',$id)->withCount('posts')->orderBy('posts_count','desc')->get());
     }
-    public function getFeature($id){
+    public function getFeature($locale='en',$id){
         return response()->json(Feature::where('subcategory_id',$id)->get());
     }
-    public function getItemType($id){
+    public function getItemType($locale='en',$id){
         return response()->json(ItemType::where('subcategory_id',$id)->get());
     }
-    public function getData($category_id=null,$subcategory_id=null){
-        $brand=$this->getBrand($subcategory_id);
-        $feature=$this->getFeature($subcategory_id);
-        $item=$this->getItemType($subcategory_id);
-        $fueltype=$this->getFuelType($subcategory_id);
-        $bodytype=$this->getBodyType($subcategory_id);
-        $unittype=$this->getUnitType($subcategory_id);
+    public function getData($locale='en',$category_id=null,$subcategory_id=null){
+        $brand=$this->getBrand('',$subcategory_id);
+        $feature=$this->getFeature('',$subcategory_id);
+        $item=$this->getItemType('',$subcategory_id);
+        $fueltype=$this->getFuelType('',$subcategory_id);
+        $bodytype=$this->getBodyType('',$subcategory_id);
+        $unittype=$this->getUnitType('',$subcategory_id);
         return response()->json([
                 'brand'=>$brand,
                 'feature'=>$feature,

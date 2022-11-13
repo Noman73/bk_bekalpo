@@ -45,7 +45,7 @@ class BodyTypeController extends Controller
                     return $button;
               })
               ->addColumn('sub_cat',function($get){
-                return $get->subcategory->name;
+                return $get->subcategory->name_en;
               })
           ->rawColumns(['action'])->make(true);
         }
@@ -61,13 +61,15 @@ class BodyTypeController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1|unique:body_types,name_en",
+            'name_bn'=>"required|max:200|min:1|unique:body_types,name_bn",
             'subcategory'=>"required|max:200|min:1",
         ]);
 
         if($validator->passes()){
             $bodytype=new BodyType;
-            $bodytype->name=$request->name;
+            $bodytype->name_en=$request->name_en;
+            $bodytype->name_bn=$request->name_bn;
             $bodytype->subcategory_id=$request->subcategory;
             $bodytype->status=1;
             $bodytype->author_id=auth()->user()->id;
@@ -111,13 +113,15 @@ class BodyTypeController extends Controller
     public function update(Request $request, $id)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1|unique:body_types,name_en,".$id,
+            'name_bn'=>"required|max:200|min:1|unique:body_types,name_bn,".$id,
             'subcategory'=>"required|max:200|min:1",
         ]);
 
         if($validator->passes()){
             $bodytype=BodyType::find($id);
-            $bodytype->name=$request->name;
+            $bodytype->name_en=$request->name_en;
+            $bodytype->name_bn=$request->name_bn;
             $bodytype->subcategory_id=$request->subcategory;
             $bodytype->status=1;
             $bodytype->author_id=auth()->user()->id;

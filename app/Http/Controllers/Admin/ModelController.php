@@ -44,8 +44,8 @@ class ModelController extends Controller
                     return $button;
               })
               ->addColumn('brand',function($get){
-                   return $get->brand->name;
-                })
+                   return $get->brand->name_en;
+              })
           ->rawColumns(['action'])->make(true);
         }
         return view('backend.model.model',compact('brand'));

@@ -13,8 +13,12 @@
           searchable:false
         },
         {
-          data:'name',
-          name:'name',
+          data:'name_en',
+          name:'name_en',
+        },
+        {
+          data:'name_bn',
+          name:'name_bn',
         },
         {
           data:'action',
@@ -24,11 +28,13 @@
   });
   
   function formRequest(){
-      $('#name').removeClass('is-invalid');
-      let name=$('#name').val();
+      $('#name_en').removeClass('is-invalid');
+      let name_en=$('#name_en').val();
+      let name_bn=$('#name_bn').val();
       let id=$('#id').val();
       let formData= new FormData();
-      formData.append('name',name);
+      formData.append('name_en',name_en);
+      formData.append('name_bn',name_bn);
       if(id!=''){
         formData.append('_method','PUT');
         $('#exampleModalLabel').text('Update Cities');

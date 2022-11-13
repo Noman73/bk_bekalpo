@@ -3,6 +3,7 @@ use App\Models\Post;
 use App\Models\Category;
 $post=Post::where('status',2)->count();
 $cat=Category::count();
+$allads=include('pages/allads.php');
 return [
    "header"=>[
         "title"=>"এক ক্লিকে সহজে বিক্রয় করুন",
@@ -43,7 +44,12 @@ return [
        ],
        'short_description'=>"Bekalpo.com একটি বড় মার্কেট এখানে প্রডাক্টের বিজ্ঞাপন দেয়া হয়! ",
        ],
-    'ad'=>"বিজ্ঞাপন",
+    'ad'=>"টি বিজ্ঞাপন",
+    "pages"=>[
+        'allads'=>$allads,
+        'singlead'=>include('pages/singlead.php'),
+        'post'=>include('pages/post.php'),
+    ]
 
     
 ];

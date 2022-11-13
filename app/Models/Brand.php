@@ -10,7 +10,7 @@ class Brand extends Model
     use HasFactory;
     protected $fillable = ['name'];
     public function category(){
-        return $this->belongsTo(SubCategory::class,'subcategory_id','id');
+        return $this->belongsTo(SubCategory::class,'subcategory_id','id')->with('category');
     }
     public function posts()
     {

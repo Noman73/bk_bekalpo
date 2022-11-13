@@ -55,12 +55,14 @@ class DivisionController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1|unique:divisions,name_en",
+            'name_bn'=>"required|max:200|min:1|unique:divisions,name_bn",
         ]);
 
         if($validator->passes()){
             $division=new Division;
-            $division->name=$request->name;
+            $division->name_en=$request->name_en;
+            $division->name_bn=$request->name_bn;
             $division->author_id=auth()->user()->id;
             $division->status=1;
             $division->save();
@@ -103,12 +105,14 @@ class DivisionController extends Controller
     public function update(Request $request, $id)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1|unique:divisions,name_en,".$id,
+            'name_bn'=>"required|max:200|min:1|unique:divisions,name_bn,".$id,
         ]);
 
         if($validator->passes()){
             $division=Division::find($id);
-            $division->name=$request->name;
+            $division->name_en=$request->name_en;
+            $division->name_bn=$request->name_bn;
             $division->author_id=auth()->user()->id;
             $division->status=1;
             $division->save();

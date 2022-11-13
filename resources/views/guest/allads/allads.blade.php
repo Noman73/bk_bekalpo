@@ -22,12 +22,12 @@ bekalpo.com | Easy Buy, Easy Sell
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumbs-area">
-                    <h1>All Ads</h1>
+                    <h1>@lang('lang.pages.allads.header.title')</h1>
                     <ul>
                         <li>
-                            <a href="index-2.html">Home</a>
+                            <a href="index-2.html">@lang('lang.pages.allads.header.home')</a>
                         </li>
-                        <li>All Ads</li>
+                        <li>@lang('lang.pages.allads.header.title')</li>
                     </ul>
                 </div>
             </div>
@@ -46,7 +46,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="col-lg-3 form-group">
                             <div class="input-search-btn search-location">
                                 <i class="fa fa-map-marker-alt"></i>
-                                <span id="locationModal">Location</span>
+                                <span id="locationModal">@lang('lang.pages.allads.location')</span>
                             </div>
                         </div>
                         {{-- <div class="col-lg-3 form-group">
@@ -73,11 +73,11 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="col-lg-7 form-group">
                             <div class="input-search-btn search-keyword">
                                 <i class="fa fa-text-width"></i>
-                                <input type="text" class="form-control" placeholder="Enter Keyword here ..." name="keyword" id="keyword">
+                                <input type="text" class="form-control" placeholder="@lang('lang.pages.allads.search_placeholder')" name="keyword" id="keyword">
                             </div>
                         </div>
                         <div class="col-lg-2 form-group">
-                            <button type="submit" id="keyword-btn" class="submit-btn"><i class="fa fa-search"></i>Search</button>
+                            <button type="submit" id="keyword-btn" class="submit-btn"><i class="fa fa-search"></i>@lang('lang.pages.allads.search_button')</button>
                         </div>
                     </div>
                 </form>
@@ -97,13 +97,13 @@ bekalpo.com | Easy Buy, Easy Sell
         <div class="row">
             <div class="col-xl-3 col-lg-4 sidebar-break-md sidebar-widget-area" id="accordion">
                 <div class="widget-bottom-margin-md widget-accordian widget-filter">
-                    <h3 class="widget-bg-title">Filter <button class="btn btn-sm btn-light float-right" onclick="reset()">Reset</button></h3>
+                    <h3 class="widget-bg-title">@lang('lang.pages.allads.filter') <button class="btn btn-sm btn-light float-right" onclick="reset()">@lang('lang.pages.allads.reset')</button></h3>
                     <form action="#">
                         <div class="accordion-box">
                             <div class="card filter-type filter-item-list">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
-                                        Type
+                                        @lang('lang.pages.allads.type')
                                     </a>
                                 </div>
                                 <div id="collapseOne" class="collapse" data-parent="#accordion">
@@ -112,11 +112,11 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="radioexample" onclick="adType(this.value)" id="radio1" value="1">
-                                                    <label class="form-check-label" for="radio1">Sell</label>
+                                                    <label class="form-check-label" for="radio1">@lang('lang.pages.allads.sell')</label>
                                                 </li>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="radioexample" onclick="adType(this.value)" id="radio2" value="2">
-                                                    <label class="form-check-label" for="radio2">Buy</label>
+                                                    <label class="form-check-label" for="radio2">@lang('lang.pages.allads.buy')</label>
                                                 </li>
                                             </ul>
                                         </div>
@@ -127,7 +127,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#conditionClp" aria-expanded="true">
-                                        Condition
+                                        @lang('lang.pages.allads.condition')
                                     </a>
                                 </div>
                                 <div id="conditionClp" class="collapse" data-parent="#accordion">
@@ -136,15 +136,15 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="condition[]" onclick="conditions(this.value)" id="radio1" value="1">
-                                                    <label class="form-check-label" for="radio1">New</label>
+                                                    <label class="form-check-label" for="radio1">@lang('lang.pages.allads.new')</label>
                                                 </li>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="condition[]" onclick="conditions(this.value)" id="radio2" value="2">
-                                                    <label class="form-check-label" for="radio2">Used</label>
+                                                    <label class="form-check-label" for="radio2">@lang('lang.pages.allads.used')</label>
                                                 </li>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="condition[]" onclick="conditions(this.value)" id="radio2" value="3">
-                                                    <label class="form-check-label" for="radio2">Recondition</label>
+                                                    <label class="form-check-label" for="radio2">@lang('lang.pages.allads.recondition')</label>
                                                 </li>
                                             </ul>
                                         </div>
@@ -156,7 +156,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list" id="category_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#categoryClp" aria-expanded="true">
-                                        Category
+                                        @lang('lang.pages.allads.category')
                                     </a>
                                 </div>
                                 <div id="categoryClp" class="collapse" data-parent="#accordion">
@@ -165,7 +165,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <div class="form-group">
                                                     <select onChange="categories(this)" class="form-control" name="" id="category">
-                                                        <option value="">-Select an Option-</option>
+                                                        <option value="">-@lang('lang.pages.allads.select_an_option')-</option>
                                                         @php
                                                         $n='name_'.$locale;
                                                         @endphp
@@ -182,7 +182,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list d-none" id="subcategory_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#subcategoryClp" aria-expanded="true">
-                                        Sub Category
+                                        @lang('lang.pages.allads.sub_category')
                                     </a>
                                 </div>
                                 <div id="subcategoryClp" class="collapse" data-parent="#accordion">
@@ -191,7 +191,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <div class="form-group">
                                                     <select onChange="subcategories(this.value)" class="form-control" name="" id="subcategory">
-                                                        <option value="">-Select an Option-</option>
+                                                        <option value="">-@lang('lang.pages.allads.select_an_option')-</option>
                                                     </select>
                                                 </div>
                                             </ul>
@@ -235,7 +235,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list d-none" id="brand_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#brandClp" aria-expanded="true">
-                                        Brand
+                                        @lang('lang.pages.allads.brand')
                                     </a>
                                 </div>
                                 <div id="brandClp" class="collapse" data-parent="#accordion">
@@ -244,7 +244,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <div class="form-group">
                                                     <select onChange="brands(this.value)" class="form-control" name="" id="brand">
-                                                        <option value="">-Select an Option-</option>
+                                                        <option value="">-@lang('lang.pages.allads.select_an_option')-</option>
                                                     </select>
                                                 </div>
                                             </ul>
@@ -256,7 +256,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list d-none" id="model_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#modelClp" aria-expanded="true">
-                                        Model
+                                        @lang('lang.pages.allads.model')
                                     </a>
                                 </div>
                                 <div id="modelClp" class="collapse" data-parent="#accordion">
@@ -265,7 +265,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <div class="form-group">
                                                     <select onChange="models(this.value)" class="form-control" name="" id="model">
-                                                        <option value="">-Select an Option-</option>
+                                                        <option value="">-@lang('lang.pages.allads.select_an_option')-</option>
                                                     </select>
                                                 </div>
                                             </ul>
@@ -277,7 +277,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list d-none" id="item_type_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#item_typeClp" aria-expanded="true">
-                                        Item Type
+                                        @lang('lang.pages.allads.item_type')
                                     </a>
                                 </div>
                                 <div id="item_typeClp" class="collapse" data-parent="#accordion">
@@ -286,7 +286,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <div class="form-group">
                                                     <select onChange="itemtype(this.value)" class="form-control" name="" id="item_type">
-                                                        <option value="">-Select an Option-</option>
+                                                        <option value="">-@lang('lang.pages.allads.select_an_option')-</option>
                                                     </select>
                                                 </div>
                                             </ul>
@@ -298,7 +298,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list d-none" id="authenticity_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#authenticityClp" aria-expanded="true">
-                                        Authenticity
+                                        @lang('lang.pages.allads.authenticity')
                                     </a>
                                 </div>
                                 <div id="authenticityClp" class="collapse" data-parent="#accordion">
@@ -307,11 +307,11 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="authenticity[]" onclick="authenticities(this.value)" id="radio1" value="1">
-                                                    <label class="form-check-label" for="radio1">Original</label>
+                                                    <label class="form-check-label" for="radio1">@lang('lang.pages.allads.original')</label>
                                                 </li>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="authenticity[]" onclick="authenticities(this.value)" id="radio2" value="2">
-                                                    <label class="form-check-label" for="radio2">Refurbished</label>
+                                                    <label class="form-check-label" for="radio2">@lang('lang.pages.allads.refurbished')</label>
                                                 </li>
                                             </ul>
                                         </div>
@@ -322,7 +322,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-price-range filter-item-list d-none" id="manufacture_year_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#manufacture_yearFour" aria-expanded="true">
-                                        Manufacture Year
+                                        @lang('lang.pages.allads.manufacture_year')
                                     </a>
                                 </div>
                                 <div id="manufacture_yearFour" class="collapse" data-parent="#accordion">
@@ -336,7 +336,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                                     <input type="number" name="filter-price-min"  class="form-control" id="max" placeholder="max" onkeyup="maxManufacture(this.value)">
                                                 </div>
                                                 <div class="col-12 form-group">
-                                                    <button id="apply-filter" class="filter-btn">Apply Filters</button>
+                                                    <button id="apply-filter" class="filter-btn">@lang('lang.pages.allads.apply_filter')</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -347,7 +347,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list d-none" id="transmission_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#transmissionClp" aria-expanded="true">
-                                        Transmission
+                                        @lang('lang.pages.allads.transmission')
                                     </a>
                                 </div>
                                 <div id="transmissionClp" class="collapse" data-parent="#accordion">
@@ -356,15 +356,15 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="radioexample" onclick="transmissions(this.value)" id="radio1" value="1">
-                                                    <label class="form-check-label" for="radio1">Manual</label>
+                                                    <label class="form-check-label" for="radio1">@lang('lang.pages.allads.manual')</label>
                                                 </li>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="radioexample" onclick="transmissions(this.value)" id="radio2" value="2">
-                                                    <label class="form-check-label" for="radio2">Autometic</label>
+                                                    <label class="form-check-label" for="radio2">@lang('lang.pages.allads.autometic')</label>
                                                 </li>
                                                 <li class="form-check">
                                                     <input class="form-check-input" type="radio" name="radioexample" onclick="transmissions(this.value)" id="radio2" value="3">
-                                                    <label class="form-check-label" for="radio2">Others Transmission</label>
+                                                    <label class="form-check-label" for="radio2">@lang('lang.pages.allads.others_transmission')</label>
                                                 </li>
                                             </ul>
                                         </div>
@@ -374,7 +374,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-type filter-item-list d-none" id="body_type_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#body_typeClp" aria-expanded="true">
-                                        Body Type
+                                        @lang('lang.pages.allads.body_type')
                                     </a>
                                 </div>
                                 <div id="body_typeClp" class="collapse" data-parent="#accordion">
@@ -383,7 +383,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                             <ul>
                                                 <div class="form-group">
                                                     <select onchange="bodytype(this.value)"  class="form-control" name="" id="body_type">
-                                                        <option value="">-Select an Option-</option>
+                                                        <option value="">-@lang('lang.pages.allads.select_an_option')-</option>
                                                     </select>
                                                 </div>
                                             </ul>
@@ -395,7 +395,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-price-range filter-item-list d-none" id="kilometer_run_filter">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#kilometrerunFour" aria-expanded="true">
-                                        Kilometers Run
+                                        @lang('lang.pages.allads.kilometer_run')
                                     </a>
                                 </div>
                                 <div id="kilometrerunFour" class="collapse" data-parent="#accordion">
@@ -409,7 +409,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                                     <input type="number" name="filter-price-min"  class="form-control" id="max" placeholder="max" onkeyup="kilometreRun(this.value)">
                                                 </div>
                                                 <div class="col-12 form-group">
-                                                    <button id="apply-filter" class="filter-btn">Apply Filters</button>
+                                                    <button id="apply-filter" class="filter-btn">@lang('lang.pages.allads.apply_filter')</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -421,7 +421,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="card filter-price-range filter-item-list">
                                 <div class="card-header">
                                     <a class="parent-list" role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="true">
-                                        Price Range
+                                        @lang('lang.pages.allads.price_range')
                                     </a>
                                 </div>
                                 <div id="collapseFour" class="collapse show" data-parent="#accordion">
@@ -429,13 +429,13 @@ bekalpo.com | Easy Buy, Easy Sell
                                         <div class="price-range-content">
                                             <div class="row">
                                                 <div class="col-lg-6 form-group">
-                                                    <input type="number" name="filter-price-min" class="form-control" id="min" placeholder="min" onkeyup="minPrice(this.value)">
+                                                    <input type="number" name="filter-price-min" class="form-control" id="min" placeholder="@lang('lang.pages.allads.min')" onkeyup="minPrice(this.value)">
                                                 </div>
                                                 <div class="col-lg-6 form-group">
-                                                    <input type="number" name="filter-price-min"  class="form-control" id="max" placeholder="max" onkeyup="maxPrice(this.value)">
+                                                    <input type="number" name="filter-price-min"  class="form-control" id="max" placeholder="@lang('lang.pages.allads.max')" onkeyup="maxPrice(this.value)">
                                                 </div>
                                                 <div class="col-12 form-group">
-                                                    <button id="apply-filter" class="filter-btn">Apply Filters</button>
+                                                    <button id="apply-filter" class="filter-btn">@lang('lang.pages.allads.apply_filter')</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -450,20 +450,20 @@ bekalpo.com | Easy Buy, Easy Sell
                 <div class="product-filter-heading">
                     <div class="row align-items-center">
                         <div class="col-md-6">
-                            <h2 class="item-title" id="item-title-header">Loading ....</h2>
+                            <h2 class="item-title" id="item-title-header">@lang('lang.pages.allads.loading') ....</h2>
                         </div>
                         <div class="col-md-6 d-flex justify-content-md-end justify-content-center">
                             <div class="product-sorting">
                                 <div class="ordering-controller">
                                     <button class="ordering-btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        Sort By
+                                        @lang('lang.pages.allads.sort_by')
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="aToZ()">A to Z (title)</a>
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="zToA()">Z to A (title)</a>
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="oldest()">Data Added (oldest)</a>
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="lowToHigh()">Price (low to high)</a>
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="highToLow()">Price (high to low)</a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="aToZ()">@lang('lang.pages.allads.atoz')</a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="zToA()">@lang('lang.pages.allads.ztoa')</a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="oldest()">@lang('lang.pages.allads.oldest')</a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="lowToHigh()">@lang('lang.pages.allads.lowtohigh')</a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="highToLow()">@lang('lang.pages.allads.hightolow')</a>
                                     </div>
                                 </div>
                                 <div class="layout-switcher">

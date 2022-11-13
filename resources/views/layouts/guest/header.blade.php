@@ -78,7 +78,7 @@
                     <div class="row d-flex align-items-center">
                         <div class="col-lg-2">
                             <div class="logo-area">
-                                <a href="{{URL::to('/')}}" class="temp-logo">
+                                <a href="{{URL::to('/'.app()->getLocale())}}" class="temp-logo">
                                     <img style="height:70px;" src="{{asset('storage/logo/'.$company->logo)}}" alt="logo" class="img-fluid">
                                 </a>
                             </div>
@@ -87,10 +87,12 @@
                             <nav id="dropdown" class="template-main-menu ">
                                 <ul>
                                     <li>
-                                        <a  href="javascript:void(0)">বাংলা</a>
+                                        <a id="lang"  href="javascript:void(0)">বাংলা</a>
                                     </li>
                                     <li>
-                                        <a  href="{{route('users.all-ads')}}">{{__('lang.header.all_ads')}}</a>
+
+                                        {{-- <a  href="{{route('admin.login')}}">{{__('lang.header.all_ads')}}</a> --}}
+                                        <a  href="{{URL::to(app()->getLocale().'/ads')}}">{{__('lang.header.all_ads')}}</a>
                                     </li>
                                    
                                     @guest
@@ -110,7 +112,7 @@
                                             <i class="fa fa-user"></i>
                                         </a>
                                         @else
-                                        <a href="{{URL::to('/account')}}" id="my_account" class="color-primary">
+                                        <a href="{{URL::to(app()->getLocale().'/account')}}" id="my_account" class="color-primary">
                                             {{-- <i class="fa fa-user"></i> --}}
                                             <i class="fa fa-user"></i>
                                         </a>
@@ -120,7 +122,7 @@
                                         @guest
                                         <a href="javascript:void(0)" class="item-btn login"><i class="fa fa-plus"></i>{{__('lang.header.post_your_ad')}}</a>
                                         @else
-                                        <a href="{{route('users.post.create')}}" class="item-btn"><i class="fa fa-plus"></i>{{__('lang.header.post_your_ad')}}</a>
+                                        <a href="{{URL::to(app()->getLocale().'/post/create')}}" class="item-btn"><i class="fa fa-plus"></i>{{__('lang.header.post_your_ad')}}</a>
                                         @endguest
                                     </li>
                                 </ul>

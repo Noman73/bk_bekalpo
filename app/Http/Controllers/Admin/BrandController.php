@@ -36,7 +36,7 @@ class BrandController extends Controller
         $category=SubCategory::all();
         // dd($category);
         if (request()->ajax()){
-            $get=Brand::with('category')->get();
+            $get=Brand::with('category');
             return DataTables::of($get)
               ->addIndexColumn()
               ->addColumn('action',function($get){
@@ -46,8 +46,11 @@ class BrandController extends Controller
           </div>';
             return $button;
           })
-          ->addColumn('category',function($get){
-            return $get->category->name;
+          ->addColumn('subcategory',function($get){
+            return $get->category->name_en;
+        })
+        ->addColumn('category',function($get){
+            return $get->category->category->name_en;
         })
           ->rawColumns(['action','category'])->make(true);
         }
@@ -63,13 +66,15 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1|unique:brands,name_en",
+            'name_bn'=>"required|max:200|min:1|unique:brands,name_bn",
             'category'=>"required|max:200|min:1",
         ]);
 
         if($validator->passes()){
             $brand=new Brand;
-            $brand->name=$request->name;
+            $brand->name_en=$request->name_en;
+            $brand->name_bn=$request->name_bn;
             $brand->subcategory_id=$request->category;
             $brand->status=1;
             $brand->author_id=auth()->user()->id;
@@ -113,13 +118,15 @@ class BrandController extends Controller
     public function update(Request $request, $id)
     {
         $validator=Validator::make($request->all(),[
-            'name'=>"required|max:200|min:1",
+            'name_en'=>"required|max:200|min:1|unique:brands,name_en,".$id,
+            'name_bn'=>"required|max:200|min:1|unique:brands,name_bn,".$id,
             'category'=>"required|max:200|min:1",
         ]);
 
         if($validator->passes()){
             $brand=Brand::find($id);
-            $brand->name=$request->name;
+            $brand->name_en=$request->name_en;
+            $brand->name_bn=$request->name_bn;
             $brand->subcategory_id=$request->category;
             $brand->status=1;
             $brand->save();

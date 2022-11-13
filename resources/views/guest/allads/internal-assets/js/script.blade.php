@@ -32,7 +32,7 @@ var token="{{csrf_token()}}";
     })
 function filter(){
     // $("#preloader").fadeIn();
-    $.post("{{URL::to('/post-data')}}",{_token:token,sort:sort,ad_type:ad_type,category:category,subcat:subcat,min_price:min_price,high_price,city:city,location:loc,search:search,condition:condition,brand:brand,manufacture_min:manufacture_min,manufacture_max:manufacture_max,transmission:transmission,body_type:body_type,kilometer_run_min:kilometer_run_min,kilometer_run_max:kilometer_run_max,model:model,authenticity:authenticity,item_type:item_type})
+    $.post("{{URL::to(app()->getLocale().'/post-data')}}",{_token:token,sort:sort,ad_type:ad_type,category:category,subcat:subcat,min_price:min_price,high_price,city:city,location:loc,search:search,condition:condition,brand:brand,manufacture_min:manufacture_min,manufacture_max:manufacture_max,transmission:transmission,body_type:body_type,kilometer_run_min:kilometer_run_min,kilometer_run_max:kilometer_run_max,model:model,authenticity:authenticity,item_type:item_type})
         .then(response=>{
             $('#posts-all').html(response);
             $("#not-found").empty();
@@ -46,7 +46,7 @@ function filter(){
         })
 }
 function featurePost(){
-    $.post("{{URL::to('/featured-post')}}",{category:category,subcat:subcat,_token:token})
+    $.post("{{URL::to(app()->getLocale().'/featured-post')}}",{category:category,subcat:subcat,_token:token})
         .then(response=>{
             $('#posts-feature').html(response);
             $('#item-title-header').text($('#item-title').val())
@@ -87,7 +87,7 @@ function adType(val){
 }
 function subcategories(val){
     subcat=val;
-    $.get("{{URL::to('/get-brand')}}/"+subcat)
+    $.get("{{URL::to(app()->getLocale().'/get-brand')}}/"+subcat)
         .then(response=>{
             let brand="<option value=''>- Select an Option -</option>";
             response.forEach(function(d){
@@ -98,7 +98,7 @@ function subcategories(val){
                 $('#subcategory_filter').removeClass('d-none')
             }
         })
-    $.get("{{URL::to('/get-bodytype')}}/"+subcat)
+    $.get("{{URL::to(app()->getLocale().'/get-bodytype')}}/"+subcat)
         .then(response=>{
             let bodytype="<option value=''>- Select an Option -</option>";
             response.forEach(function(d){
@@ -106,7 +106,7 @@ function subcategories(val){
             })
             $('#body_type').html(bodytype);
         })
-    $.get("{{URL::to('/get-itemtype')}}/"+subcat)
+    $.get("{{URL::to(app()->getLocale().'/get-itemtype')}}/"+subcat)
         .then(response=>{
             let itemtype="<option value=''>- Select an Option -</option>";
             response.forEach(function(d){
@@ -114,7 +114,7 @@ function subcategories(val){
             })
             $('#item_type').html(itemtype);
         })
-    $.get("{{URL::to('/field-permission')}}/"+subcat)
+    $.get("{{URL::to(app()->getLocale().'/field-permission')}}/"+subcat)
         .then(response=>{
             fields=[];
             response.forEach(function(d){ 
@@ -182,11 +182,11 @@ function categories(this_val){
     category=$(this_val).val();
     text=$(this_val).find('option:selected').text();
     text=text.split('(');
-    $.get("{{URL::to('get-subcategory/')}}/"+category)
+    $.get("{{URL::to(app()->getLocale().'/get-subcategory/')}}/"+category)
         .then(response=>{
             let brand="<option value=''>All "+text[0]+"</option>";
             response.forEach(function(d){
-                brand+="<option value='"+d.id+"'>"+d.name+" ("+d.posts_count+")</option>";
+                brand+="<option value='"+d.id+"'>"+d['name_'+lang]+" ("+d.posts_count+")</option>";
             })
             $('#subcategory').html(brand);
             if(response.length>0){
@@ -282,17 +282,16 @@ $(document).on('click','.pagination a',function(e){
     e.preventDefault()
     let link=$(this).attr('href')
     let page=link.split('page=')[1];
-    $.post("{{URL::to('/post-data')}}?page="+page,{_token:token,sort:sort,ad_type:ad_type,subcat:subcat,min_price:min_price,high_price,location:loc,condition:condition})
+    $.post("{{URL::to(app()->getLocale().'/post-data')}}?page="+page,{_token:token,sort:sort,ad_type:ad_type,subcat:subcat,min_price:min_price,high_price,location:loc,condition:condition})
     .then(response=>{
-            $('#posts-all').html(response);
-            $("#not-found").empty();
-            $('#item-title-header').text($('#item-title').val())
-            if(response==""){
-                msg="<h5 class='text-center content-justify-center text-danger'>No Ad Found</h5>"
-                $('#not-found').html(msg);
-                $('#item-title-header').text('')
-            }
-        
+        $('#posts-all').html(response);
+        $("#not-found").empty();
+        $('#item-title-header').text($('#item-title').val())
+        if(response==""){
+            msg="<h5 class='text-center content-justify-center text-danger'>No Ad Found</h5>"
+            $('#not-found').html(msg);
+            $('#item-title-header').text('')
+        }
     })
 })
 $(document).on('click','#apply-filter',function(e){
@@ -351,13 +350,13 @@ function cities(val,divname){
     city=val;
     let division=val;
         if(division!=''){
-            $.get("{{URL::to('/get-city-location')}}/"+division)
+            $.get("{{URL::to(app()->getLocale().'/get-city-location')}}/"+division)
             .then(response=>{
                 let location=`<span class="m-3"><strong>Select a local area in `+divname+`
                               </strong></span><ul class='list-group list-group-flush text-color'>`;
                     location+=`<li onclick="allCities(`+division+`,'`+String(divname)+`')" class='list-group-item color'>All Of `+divname+` <i class='fa fa-angle-right mt-1 float-right'></i></li>`;
                 response.forEach(function(d){
-                    location+=`<li onclick="locaTion(`+d.id+`,'`+String(d.name)+`')" class='list-group-item color'>`+d.name+` <i class='fa fa-angle-right mt-1 float-right'></i></li>`;
+                    location+=`<li onclick="locaTion(`+d.id+`,'`+String(d['name_'+lang])+`')" class='list-group-item color'>`+d['name_'+lang]+` <i class='fa fa-angle-right mt-1 float-right'></i></li>`;
                     // location+="<option value='"+d.id+"'>"+d.name+"</option>";
                 })
                 location+="</ul>"
@@ -381,17 +380,18 @@ function areas(val,divname){
     city=val;
     let division=val;
         if(division!=''){
-            $.get("{{URL::to('/get-area-location')}}/"+division)
+            $.get("{{URL::to(app()->getLocale().'/get-area-location')}}/"+division)
             .then(response=>{
                 let location=`<span class="m-3"><strong>Select a local area in `+divname+`
                               </strong></span><ul class='list-group list-group-flush text-color'>`;
                     location+=`<li onclick="allAreas(`+division+`,'`+String(divname)+` Division')" class='list-group-item color'>All Of `+divname+` Division<i class='fa fa-angle-right mt-1 float-right'></i></li>`;
                 response.forEach(function(d){
-                    location+=`<li onclick="locaTion(`+d.id+`,'`+String(d.name)+`')" class='list-group-item color'>`+d.name+` <i class='fa fa-angle-right mt-1 float-right'></i></li>`;
+                    location+=`<li onclick="locaTion(`+d.id+`,'`+String(d['name_'+lang])+`')" class='list-group-item color'>`+d['name_'+lang]+` <i class='fa fa-angle-right mt-1 float-right'></i></li>`;
                     // location+="<option value='"+d.id+"'>"+d.name+"</option>";
                 })
                 location+="</ul>"
                 $('#right-part').html(location);
+                console.log(location)
             })
         }
         modalResponsive();
@@ -414,14 +414,14 @@ function allAreas(val,name){
             .then(response=>{
                 let brand="<option value=''>- Select a Model -</option>";
                 response.forEach(function(d){
-                    brand+="<option value='"+d.id+"'>"+d.name+" ("+d.posts_count+")</option>";
+                    brand+="<option value='"+d.id+"'>"+d['name_'+lang]+" ("+d.posts_count+")</option>";
                 })
                 $('#model').html(brand);
             })
         }
     });
     $(document).on('click','#locationModal',function(){
-            $.get("{{URL::to('/get-location-modal')}}")
+            $.get("{{URL::to(app()->getLocale().'/get-location-modal')}}")
             .then(response=>{
                $('#renderModal').html(response);
                $('.locationModal').modal('show');

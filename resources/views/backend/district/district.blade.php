@@ -26,7 +26,8 @@
                         <tr>
                             <th>SL</th>
                             <th>Cities</th>
-                            <th>Areas</th>
+                            <th>Areas en</th>
+                            <th>Areas bn</th>
                             <th>City/Area</th>
                             <th>Action</th>
                         </tr>
@@ -51,7 +52,7 @@
                                     <select type="text" class="default-select form-control wide" id="cities" name="cities">
                                         <option value="">--SELECT--</option>
                                         @foreach($division as $div)
-                                        <option value="{{$div->id}}">{{$div->name}}</option>
+                                        <option value="{{$div->id}}">{{$div->name_en}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback" id="cities_msg">
@@ -59,9 +60,15 @@
                                 </div>
                                 <br>
                                 <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Area :</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Area Name ">
-                                    <div class="invalid-feedback" id="name_msg">
+                                    <label for="recipient-name" class="col-form-label">Area en:</label>
+                                    <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter Area Name ">
+                                    <div class="invalid-feedback" id="name_en_msg">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Area bn:</label>
+                                    <input type="text" class="form-control" id="name_bn" name="name_bn" placeholder="Enter Area Name ">
+                                    <div class="invalid-feedback" id="name_bn_msg">
                                     </div>
                                 </div>
                                 <div class="form-check custom-checkbox mb-3 checkbox-warning">

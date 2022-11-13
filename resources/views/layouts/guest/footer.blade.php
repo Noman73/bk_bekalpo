@@ -89,7 +89,11 @@
     @include('frontend.login.login')
 
     <script>
-        var url="{{URL::to('/')}}"
+        var lang="{{app()->getLocale()}}";
+        var url="{{URL::to('/')}}/"+lang;
+        var this_url=window.location.href;
+        var baseURL="{{URL::to('/')}}/"+(lang=='en' ? 'bn' :'en');
+        
     </script>
     <!-- Jquery Js -->
     <script src="{{asset('storage/dependencies/jquery/js/jquery.min.js')}}"></script>
@@ -122,12 +126,28 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtmXSwv4YmAKtcZyyad9W7D4AC08z0Rb4"></script>
     <!-- Site Scripts -->
     <script src="{{asset('storage/assets/js/app.js')}}"></script>
-    
+    <script>
+        if(this_url=="{{URL::to('/')}}/"){
+            this_url=this_url+lang;
+            console.log(this_url)
+        }
+        if(lang=='en'){
+            $('#lang').text('বাংলা');
+            lang_url=this_url.replace(url,baseURL);
+        }else{
+            $('#lang').text('English');
+            lang_url=this_url.replace(url,baseURL);
+        }
+        $('#lang').click(function(e){
+            window.location=lang_url;
+        })
+        console.log(lang_url,this_url)
+    </script>
     @yield('script')
     @stack('scripts')
     <script>
+        
         $(document).on('click','.login',function(){
-
             $('#loginModal').modal('show');
         })
     </script>
