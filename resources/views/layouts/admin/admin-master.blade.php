@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	@php 
+
+	$company=App\Models\Company::first();
+	@endphp
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="keywords" content="" />
@@ -14,9 +18,7 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- PAGE TITLE HERE -->
-	@php 
-	$company=App\Models\Company::first();
-	@endphp
+	
 	<title>{{$company->name}} Admin</title>
 	
 	<!-- FAVICONS ICON -->
