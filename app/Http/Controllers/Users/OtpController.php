@@ -6,21 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Otp;
 use Validator;
+use App\Http\Traits\Number;
 class OtpController extends Controller
 {
-    public function setOtp(Request $request){
+    public function setOtp($locale="en",Request $request){
         $validator=Validator::make($request->all(),[
             'mobile'=>'required|min:1|max:25|numeric',
         ]);
         $code= Otp::generate('mobile:'.$request->mobile);
-        $api_key="C20081826072b4bc932d35.83708572";
+        $api_key="C2001593632a9d8ed9db24.24710771";
         $sender_id="8809601000185";
         $contacts=$request->mobile;
         $type="application/json";
-        $msg="Your bekalpo.com Mobile Verify Code is: ".$code;
+        $msg="আপনার বিকল্প কোডটি হলো : ".Number::num($code,'bn');
         $fields='api_key='.$api_key.'&type='.$type.'&contacts='.$contacts.'&senderid='.$sender_id.'&msg='.$msg;
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,"https://esms.mimsms.com/smsapi");
+        curl_setopt($ch, CURLOPT_URL,"https://isms.mimsms.com/smsapi");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS,$fields);
         // In real life you should use something like:

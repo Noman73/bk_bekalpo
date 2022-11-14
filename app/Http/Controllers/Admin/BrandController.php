@@ -66,8 +66,8 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),[
-            'name_en'=>"required|max:200|min:1|unique:brands,name_en",
-            'name_bn'=>"required|max:200|min:1|unique:brands,name_bn",
+            'name_en'=>"required|max:200|min:1",
+            'name_bn'=>"required|max:200|min:1",
             'category'=>"required|max:200|min:1",
         ]);
 
@@ -118,8 +118,8 @@ class BrandController extends Controller
     public function update(Request $request, $id)
     {
         $validator=Validator::make($request->all(),[
-            'name_en'=>"required|max:200|min:1|unique:brands,name_en,".$id,
-            'name_bn'=>"required|max:200|min:1|unique:brands,name_bn,".$id,
+            'name_en'=>"required|max:200|min:1",
+            'name_bn'=>"required|max:200|min:1",
             'category'=>"required|max:200|min:1",
         ]);
 

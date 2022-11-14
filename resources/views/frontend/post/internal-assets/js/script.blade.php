@@ -142,7 +142,7 @@
         },1500)
     })
     function fetch(){
-        axios.post("{{route('users.post.store')}}",formData)
+        axios.post("{{URL::to(app()->getLocale().'/post/store')}}",formData)
         .then(response=>{
             if(response.data.message){
 
@@ -180,7 +180,7 @@
 
 $(document).on('click','#otp_btn',function(){
     let mobile=$('#phone').val();
-    $.post("{{URL::to('/set-otp')}}",{_token:'{{csrf_token()}}',mobile:mobile,_method:'POST'})
+    $.post("{{URL::to(app()->getLocale().'/set-otp')}}",{_token:'{{csrf_token()}}',mobile:mobile,_method:'POST'})
     .then(response=>{
         msg=response.split(':')[0];
         if(msg=='SMS SUBMITTED'){
@@ -200,7 +200,7 @@ $(document).on('click','#otp_btn',function(){
 $(document).on('click','#add-phone',function(){
     phone=$('#phone').val();
     otp=$('#otp').val();
-    $.post("{{URL::to('/add_phone')}}",{_method:'POST',_token:"{{csrf_token()}}",phone:phone,otp:otp})
+    $.post("{{URL::to(app()->getLocale().'/add_phone')}}",{_method:'POST',_token:"{{csrf_token()}}",phone:phone,otp:otp})
     .then((response)=>{
         if(response.message){
         $('#phone').val('');

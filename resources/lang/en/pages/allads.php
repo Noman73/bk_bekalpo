@@ -48,6 +48,7 @@ return [
     'hightolow'=>"Price Range (high to low)",
     'max'=>'Max',
     'min'=>'Min',
+    "features"=>"Features",
     ];
 
 
