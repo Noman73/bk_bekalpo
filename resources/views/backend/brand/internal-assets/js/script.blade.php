@@ -71,7 +71,7 @@ window.formRequest= function(){
         .then(function (response){
           if(response.data.message){
               toastr.success(response.data.message);
-              datatable.ajax.reload();
+              datatable.ajax.reload( null, false);
               clear();
               $('#exampleModal').modal('hide');
           }else if(response.data.error){
