@@ -1,4 +1,6 @@
-
+@php
+   $lang_name="name_".app()->getLocale();
+@endphp
 @extends('layouts.guest.master')
 @section('link')
 <style>
@@ -20,29 +22,29 @@
             @endforeach
         </ul>
         @endif
-        <form action="{{route('users.signup')}}" method="POST">
+        <form action="{{URL::to(app()->getLocale().'/signup')}}" method="POST">
             @csrf
             <div class="post-section basic-information">
                 <div class="post-ad-title">
                     <i class="fas fa-user"></i>
-                    <h3 class="item-title">Basic Information</h3>
+                    <h3 class="item-title">@lang('lang.pages.signup.title')</h3>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Full Name
+                            @lang('lang.pages.signup.full_name')
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input type="text" placeholder="Enter Full Name" class="form-control" name="name" id="name" value="{{old('name')}}">
+                            <input type="text" placeholder="{{__('lang.pages.signup.name_place')}}" class="form-control" name="name" id="name" value="{{old('name')}}">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
                             <label class="control-label">
-                                Gender
+                                @lang('lang.pages.signup.gender')
                             </label>
                         </div>
                         <div class="col-sm-9">
@@ -50,19 +52,19 @@
                                 <div class="form-check form-radio-btn">
                                     <input class="form-check-input" type="radio"  name="gender" value="1" {{(old('gender')==1 ? 'checked' : "")}}> 
                                     <label class="form-check-label" for="condition">
-                                        Male
+                                        @lang('lang.pages.signup.male')
                                     </label>
                                 </div>
                                 <div class="form-check form-radio-btn">
                                     <input class="form-check-input" type="radio" name="gender" value="2" {{(old('gender')==2 ? 'checked' : "")}}>
                                     <label class="form-check-label" for="condition">
-                                        Female
+                                        @lang('lang.pages.signup.female')
                                     </label>
                                 </div>
                                 <div class="form-check form-radio-btn">
                                     <input class="form-check-input" type="radio" name="gender" value="3" {{(old('gender')==3 ? 'checked' : "")}}>
                                     <label class="form-check-label" for="condition">
-                                        Others
+                                        @lang('lang.pages.signup.others')
                                     </label>
                                 </div>
                                 <div class="invalid-feedback" id="gender_msg">
@@ -73,25 +75,25 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Email
+                            @lang('lang.pages.signup.email')
                             <span>*</span>
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input type="email" placeholder="Enter Email" class="form-control" name="email" id="email" value="{{old('email')}}">
+                            <input type="email" placeholder="{{__('lang.pages.signup.email_place')}}" class="form-control" name="email" id="email" value="{{old('email')}}">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Phone
+                            @lang('lang.pages.signup.phone')
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input type="text" placeholder="Enter Your Phone..." class="form-control" name="phone" id="phone" value="{{old('phone')}}">
+                            <input type="text" placeholder="{{__('lang.pages.signup.phone_place')}}" class="form-control" name="phone" id="phone" value="{{old('phone')}}">
                         </div>
                     </div>
                 </div>
@@ -99,21 +101,21 @@
             <div class="post-section location-detail">
                 <div class="post-ad-title">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3 class="item-title">Location</h3>
+                    <h3 class="item-title">@lang('lang.pages.signup.location')</h3>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            City
+                            @lang('lang.pages.signup.city')
                             <span>*</span>
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
                             <select class="form-control select-box" name="cities" id="cities" value="{{old('cities')}}">
-                                <option value="">Select City</option>
+                                <option value="">{{__('lang.pages.allads.select_an_option')}}</option>
                                 @foreach($division as $div)
-                                <option value="{{$div->id}}">{{$div->name}}</option>
+                                <option value="{{$div->id}}">{{$div->$lang_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -122,14 +124,14 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Area
+                            @lang('lang.pages.signup.area')
                             <span>*</span>
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
                             <select class="form-control select-box" name="areas" id="areas" value="{{old('areas')}}">
-                                <option value="">Select Area</option>
+                                <option value="">@lang('lang.pages.allads.select_an_option')</option>
                             </select>
                         </div>
                     </div>
@@ -137,7 +139,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Adress
+                            @lang('lang.pages.signup.adress')
                         </label>
                     </div>
                     <div class="col-sm-9">
@@ -150,24 +152,24 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Password
+                            @lang('lang.pages.signup.password')
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input class="form-control" type="password" id="password" placeholder="password" name="password">
+                            <input class="form-control" type="password" id="password" placeholder="{{__('lang.pages.signup.password_place')}}" name="password">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                         Confirm Password
+                         @lang('lang.pages.signup.confirm_password')
                         </label>
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group mb-5">
-                            <input class="form-control" type="password" id="password_confirmation" placeholder="password" name="password_confirmation">
+                            <input class="form-control" type="password" id="password_confirmation" placeholder="{{__('lang.pages.signup.confirm_password_place')}}" name="password_confirmation">
                             <div class="invalid-feedback" id="pass_confirmation-feedback">
                             </div>
                         </div>

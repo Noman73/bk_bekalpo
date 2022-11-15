@@ -138,7 +138,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('/areas',DistrictController::class);
     Route::resource('/field_permission',FieldPermissionController::class);
     Route::resource('/company',CompanyController::class);
-    Route::resource('/post',PostManageController::class);
+    Route::resource('/posts',PostManageController::class);
     Route::get('/dashboard',[DashboardController::class,'index']);
     Route::get('/login',[LoginController::class,'showLoginForm'])->name('login');
     Route::post('/login',[LoginController::class,'login'])->name('login');

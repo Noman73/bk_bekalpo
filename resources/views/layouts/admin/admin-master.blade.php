@@ -239,7 +239,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{route('admin.post.index')}}" class="" aria-expanded="false">
+						<a href="{{route('admin.posts.index')}}" class="" aria-expanded="false">
 							<i class="flaticon-013-checkmark"></i>
 							<span class="nav-text">Manage Ads</span>
 						</a>

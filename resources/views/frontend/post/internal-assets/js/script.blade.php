@@ -117,6 +117,8 @@
             if(val=='images'){
                 for (let i = 0; i < formArr[val].length; i++) {
                     new Compressor(formArr[val][i],{
+                        maxWidth:817.5,
+                        maxHeight:500,
                         quality: 0.3,
                         success(result) {
                         formData.append('images[]',result, result.name);
@@ -142,7 +144,7 @@
         },1500)
     })
     function fetch(){
-        axios.post("{{URL::to(app()->getLocale().'/post/store')}}",formData)
+        axios.post("{{URL::to(app()->getLocale().'/post')}}",formData)
         .then(response=>{
             if(response.data.message){
 
@@ -226,7 +228,7 @@ $(document).on('click','#new-phone-btn',function(){
     $(this).addClass('d-none');
 })
 function getPhoneNumbers(){
-    $.get("{{URL::to('/get_phone')}}")
+    $.get("{{URL::to(app()->getLocale().'/get_phone')}}")
     .then((response)=>{
         numbers='';
         response.forEach(function(d){

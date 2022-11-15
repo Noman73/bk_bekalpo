@@ -64,38 +64,38 @@ bekalpo.com | Easy Buy, Easy Sell
                                     </div>
                                     <div class="item-content">
                                         <h3 class="item-title">{{auth()->user()->name}}</h3>
-                                        <div class="item-email"><span>Email: </span>{{auth()->user()->email}}</div>
+                                        <div class="item-email"><span>@lang('lang.pages.dashboard.dashboard.email'): </span>{{auth()->user()->email}}</div>
                                     </div>
                                 </div>
                                 <div class="static-report">
-                                    <h3 class="report-title">Membership Report</h3>
+                                    <h3 class="report-title">@lang('lang.pages.dashboard.dashboard.membership_report')</h3>
                                     <div class="report-list">
                                         <div class="report-item">
-                                            <label>Status</label>
+                                            <label>@lang('lang.pages.dashboard.dashboard.status')</label>
                                             <div class="item-value">{{auth()->user()->status ==1 ? "Active" : 'Deactive'}}</div>
                                         </div>
                                     </div>
                                     <div class="report-list">
                                         <div class="report-item">
-                                            <label>Joined</label>
+                                            <label>@lang('lang.pages.dashboard.dashboard.joined')</label>
                                             <div class="item-value">{{date('M, d Y',strtotime(auth()->user()->created_at))}}</div>
                                         </div>
                                     </div>
                                     <div class="report-list">
                                         <div class="report-item">
-                                            <label>Total Ads</label>
+                                            <label>@lang('lang.pages.dashboard.dashboard.total_ads')</label>
                                             <div class="item-value">{{App\Models\Post::where('user_id',auth()->user()->id)->count()}}</div>
                                         </div>
                                     </div>
                                     <div class="report-list">
                                         <div class="report-item">
-                                            <label>Reviewing Ads</label>
+                                            <label>@lang('lang.pages.dashboard.dashboard.reviewing_ads')</label>
                                             <div class="item-value">{{App\Models\Post::where('user_id',auth()->user()->id)->where('status',1)->count()}}</div>
                                         </div>
                                     </div>
                                     <div class="report-list">
                                         <div class="report-item">
-                                            <label>Published Ads</label>
+                                            <label>@lang('lang.pages.dashboard.dashboard.published_ads')</label>
                                             <div class="item-value">{{App\Models\Post::where('user_id',auth()->user()->id)->where('status',2)->count()}}</div>
                                         </div>
                                     </div>

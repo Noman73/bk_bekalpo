@@ -39,15 +39,18 @@
     @yield('link')
     <style>
         #preloader {
-        background: #ffffff url("{{asset('storage/media/preloader.gif')}}") no-repeat scroll center center;
-        height: 100%;
-        left: 0;
-        overflow: visible;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 9999999;
-}
+            background: #ffffff url("{{asset('storage/media/preloader.gif')}}") no-repeat scroll center center;
+            height: 100%;
+            left: 0;
+            overflow: visible;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999999;
+        }
+        .is-invalid{
+            border: 1px solid red !important;
+        }
     </style>
     <!-- Google Web Fonts -->
     {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i,800,800i&amp;display=swap" rel="stylesheet"> --}}

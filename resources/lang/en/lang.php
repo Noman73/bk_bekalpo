@@ -49,6 +49,7 @@ return [
    'ad'=>"Ad",
    'pages'=>[
     'dashboard'=>include('pages/dashboard.php'),
+    'signup'=>include('pages/signup.php'),
     'allads'=>include('pages/allads.php'),
     'singlead'=>include('pages/singlead.php'),
     'post'=>include('pages/post.php'),

@@ -1,7 +1,7 @@
 <script>
     function getMyAds(){
         console.log('mylist')
-        $.get("{{URL::to('/my_ads')}}")
+        $.get("{{URL::to(app()->getLocale().'/my_ads')}}")
         .then(res=>{
             $('#my-listing').html(res);
         })
@@ -14,7 +14,7 @@
     })
     function getMyFavAds(){
         console.log('myfavlist')
-        $.get("{{URL::to('/my_fav_ads')}}")
+        $.get("{{URL::to(app()->getLocale().'/my_fav_ads')}}")
         .then(res=>{
             $('#my-listing').html(res);
         })
@@ -42,7 +42,7 @@
     })
     function unFav(post_id){
         console.log('myfavlist')
-        $.get("{{URL::to('/my_ads_unfav')}}/"+post_id)
+        $.get("{{URL::to(app()->getLocale().'/my_ads_unfav')}}/"+post_id)
         .then(res=>{
             getMyFavAds();
             alert(res.message);
@@ -50,7 +50,7 @@
     }
     function profile()
     {
-        $.get("{{URL::to('/get-profile-form')}}")
+        $.get("{{URL::to(app()->getLocale().'/get-profile-form')}}")
         .then(res=>{
             console.log(res);
             $('#profile').html(res);
@@ -59,7 +59,7 @@
     $(document).on('change','#cities',function(){
         let division=$(this).val();
         if(division!=''){
-            $.get("{{URL::to('/get-location')}}/"+division)
+            $.get("{{URL::to(app()->getLocale().'/get-location')}}/"+division)
             .then(response=>{
                 console.log(response);
                 let location="<option value=''>- Select an Option -</option>";

@@ -150,6 +150,10 @@
         $(document).on('click','.login',function(){
             $('#loginModal').modal('show');
         })
+        if($('#login_email_msg').data('id')==1 || $('#login_password_msg').data('id')==1){
+            $('#loginModal').modal('show')
+        }
+        
     </script>
 </body>
 

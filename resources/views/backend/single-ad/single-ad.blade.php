@@ -235,7 +235,7 @@
                     </div>
                     <div class="item-review light-shadow-bg">
                         <h3 class="widget-border-title " style="color:black !important;">Take a Action</h3>
-                        <form action="{{route('admin.post.update',$post->id)}}" method="POST">
+                        <form action="{{route('admin.posts.update',$post->id)}}" method="POST">
                             @method('put')
                             @csrf
                             <div class="form-group">

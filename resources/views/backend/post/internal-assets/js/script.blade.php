@@ -3,7 +3,7 @@
     processing:true,
     serverSide:true,
     ajax:{
-      url:"{{route('admin.post.index')}}"
+      url:"{{route('admin.posts.index')}}"
     },
     columns:[
       {

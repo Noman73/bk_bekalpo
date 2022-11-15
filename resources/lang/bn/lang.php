@@ -46,6 +46,8 @@ return [
        ],
     'ad'=>"টি বিজ্ঞাপন",
     "pages"=>[
+        'dashboard'=>include('pages/dashboard.php'),
+        'signup'=>include('pages/signup.php'),
         'allads'=>$allads,
         'singlead'=>include('pages/singlead.php'),
         'post'=>include('pages/post.php'),

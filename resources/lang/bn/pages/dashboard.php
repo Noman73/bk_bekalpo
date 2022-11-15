@@ -12,6 +12,8 @@ return [
     ],
     'dashboard'=>[
         'email'=>'ইমেইল',
+        'membership_report'=>'মেম্বারশীপ রিপোর্ট',
+        'status'=>'অবস্থা',
         'joined'=>'জয়েন করার তারিখ',
         'total_ads'=>'মোট বিজ্ঞাপন',
         'reviewing_ads'=>'রিভিউ হচ্ছে',

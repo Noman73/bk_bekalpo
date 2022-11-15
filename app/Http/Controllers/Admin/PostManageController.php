@@ -21,28 +21,29 @@ class PostManageController extends Controller
     }
     public function index()
     {
+        $lang_name="name_".app()->getLocale();
         if (request()->ajax()){
             $get=Post::with('category','subcategory','division','district')->orderBy('status','asc')->get();
             return DataTables::of($get)
               ->addIndexColumn()
               ->addColumn('action',function($get){
               $button  ='<div class="d-flex justify-content-center">
-                            <a data-url="'.route('admin.post.edit',$get->id).'"  href="'.route('admin.post.edit',$get->id).'" class="btn btn-primary shadow btn-xs sharp me-1 editRow"><i class="fas fa-pencil-alt"></i></a>
-                            <a data-url="'.route('admin.post.destroy',$get->id).'" href="javascript:void(0)" class="btn btn-danger shadow btn-xs sharp deleteRow"><i class="fa fa-trash"></i></a>
+                            <a data-url="'.route('admin.posts.edit',$get->id).'"  href="'.route('admin.posts.edit',$get->id).'" class="btn btn-primary shadow btn-xs sharp me-1 editRow"><i class="fas fa-pencil-alt"></i></a>
+                            <a data-url="'.route('admin.posts.destroy',$get->id).'" href="javascript:void(0)" class="btn btn-danger shadow btn-xs sharp deleteRow"><i class="fa fa-trash"></i></a>
                         </div>';
             return $button;
           })
-          ->addColumn('category',function($get){
-          return $get->category->name;
+          ->addColumn('category',function($get) use ($lang_name){
+          return $get->category->$lang_name;
         })
-        ->addColumn('subcategory',function($get){
-            return $get->subcategory->name;
+        ->addColumn('subcategory',function($get) use ($lang_name){
+            return $get->subcategory->$lang_name;
         })
-        ->addColumn('division',function($get){
-            return $get->division->name;
+        ->addColumn('division',function($get) use ($lang_name){
+            return $get->division->$lang_name;
         })
-        ->addColumn('district',function($get){
-            return $get->district->name;
+        ->addColumn('district',function($get) use ($lang_name){
+            return $get->district->$lang_name;
         })
         ->addColumn('status',function($get){
             switch ($get->status) {
@@ -142,7 +143,7 @@ class PostManageController extends Controller
             }
             $post->save();
             if ($post) {
-                return redirect(route('admin.post.index'));
+                return redirect(route('admin.posts.index'));
             }
         }
         return redirect()->back()->withErrors($validator);

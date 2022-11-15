@@ -93,7 +93,7 @@
                     <div class="col-sm-9">
                         <div class="form-group">
                             <select class="form-control select-box" name="cities" id="cities">
-                                <option value="">Select City</option>
+                                <option value="">--{{__('lang.pages.allads.select_an_option')}}--</option>
                                 @foreach($division as $div)
                                 <option {{($div->id==$data->division_id ? "selected" : '')}} value="{{$div->id}}">{{$div->name}}</option>
                                 @endforeach
@@ -111,7 +111,7 @@
                     <div class="col-sm-9">
                         <div class="form-group">
                             <select class="form-control select-box" name="areas" id="areas">
-                                <option value="">Select Area</option>
+                                <option value="">{{__('lang.pages.allads.select_an_option')}}</option>
                                 @foreach($district as $dist)
                                 <option {{($dist->id==$data->district_id ? "selected" : '')}} value="{{$dist->id}}">{{$dist->name}}</option>
                                 @endforeach

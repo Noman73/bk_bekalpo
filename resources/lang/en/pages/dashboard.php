@@ -12,6 +12,8 @@ return [
     ],
     'dashboard'=>[
         'email'=>'Email',
+        'membership_report'=>'Membership Report',
+        'status'=>'Status',
         'joined'=>'Joined',
         'total_ads'=>'Total Ads',
         'reviewing_ads'=>'Reviewing Ads',
