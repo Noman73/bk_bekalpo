@@ -1,3 +1,6 @@
+@php
+$lang_name="name_".app()->getLocale();
+@endphp
 <div class="light-shadow-bg post-ad-box-layout1 myaccount-store-settings myaccount-detail">
     <div class="light-box-content">
         @if($errors->any())
@@ -95,7 +98,7 @@
                             <select class="form-control select-box" name="cities" id="cities">
                                 <option value="">--{{__('lang.pages.allads.select_an_option')}}--</option>
                                 @foreach($division as $div)
-                                <option {{($div->id==$data->division_id ? "selected" : '')}} value="{{$div->id}}">{{$div->name}}</option>
+                                <option {{($div->id==$data->division_id ? "selected" : '')}} value="{{$div->id}}">{{$div->$lang_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -113,7 +116,7 @@
                             <select class="form-control select-box" name="areas" id="areas">
                                 <option value="">{{__('lang.pages.allads.select_an_option')}}</option>
                                 @foreach($district as $dist)
-                                <option {{($dist->id==$data->district_id ? "selected" : '')}} value="{{$dist->id}}">{{$dist->name}}</option>
+                                <option {{($dist->id==$data->district_id ? "selected" : '')}} value="{{$dist->id}}">{{$dist->$lang_name}}</option>
                                 @endforeach
                             </select>
                         </div>
