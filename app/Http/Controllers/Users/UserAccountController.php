@@ -21,7 +21,7 @@ class UserAccountController extends Controller
     {
         return view('frontend.account_info.action.action')->render();
     }
-    public function getPromoteModal($id)
+    public function getPromoteModal($locale,$id)
     {
 
         $post=Post::with('permission','division','district','brand','model','images')->where('id',$id)->first();

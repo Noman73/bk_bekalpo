@@ -3,7 +3,6 @@
 function getBrand(status){
     category=$('#category').val();
     subcategory=$('#sub_category').val();
-
     console.log(category)
     if(category!='' && subcategory!=''){
         // console.log(url)
@@ -16,29 +15,30 @@ function getBrand(status){
             let item_type="<option value=''>- Select an Option -</option>"
             let bodytype="<option value=''>- Select an Option -</option>"
             let unittype="<option value=''>- Select an Option -</option>"
+            let model="<option value=''>- Select an Option -</option>"
             response.brand.original.forEach(function(d){
-                brand+="<option value='"+d.id+"'>"+d.name+"</option>"
+                brand+="<option value='"+d.id+"'>"+d['name_'+lang]+"</option>"
             })
             response.feature.original.forEach(function(d){
                 feature+=`<div class="form-check form-check-box">
                             <input class="form-check-input" type="checkbox" name="feature[]" value="`+d.id+`">
-                            <label class="form-check-label" for="`+d.name+`">`+d.name+`</label>
+                            <label class="form-check-label" for="`+d['name_'+lang]+`">`+d['name_'+lang]+`</label>
                          </div>`
             })
             response.fueltype.original.forEach(function(d){
                 fueltype+=`<div class="form-check form-check-box">
                             <input class="form-check-input" type="checkbox" name="fueltype[]" value="`+d.id+`">
-                            <label class="form-check-label" for="`+d.name+`">`+d.name+`</label>
+                            <label class="form-check-label" for="`+d['name_'+lang]+`">`+d['name_'+lang]+`</label>
                          </div>`
             })
             response.item.original.forEach(function(d){
-                item_type+="<option value='"+d.id+"'>"+d.name+"</option>"
+                item_type+="<option value='"+d.id+"'>"+d['name_'+lang]+"</option>"
             })
             response.bodytype.original.forEach(function(d){
-                bodytype+="<option value='"+d.id+"'>"+d.name+"</option>"
+                bodytype+="<option value='"+d.id+"'>"+d['name_'+lang]+"</option>"
             })
             response.unittype.original.forEach(function(d){
-                unittype+="<option value='"+d.id+"'>"+d.name+"</option>"
+                unittype+="<option value='"+d.id+"'>"+d['name_'+lang]+"</option>"
             })
             console.log(brand);
             FormArray(status,brand,feature,item_type,fueltype,bodytype,unittype);

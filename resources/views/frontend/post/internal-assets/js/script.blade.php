@@ -63,7 +63,8 @@
         }
     });
     function formRequest(){
-    let images=document.getElementsByName('images[]')[0].files;
+    // let images=document.getElementsByName('images[]')[0].files;
+    let images=imagesFiles;
     let title=$('#title').val();
     let ad_type=$('#ad_type').val();
     let category=$('#category').val();
@@ -154,7 +155,7 @@
                     'success'
                 )
                 setTimeout(() => {
-                   window.location="{{URL::to('/account')}}"
+                   window.location="{{URL::to(app()->getLocale().'/account')}}"
                 }, 500);
             }else if(response.data.error){
                 $('input').removeClass('is-invalid');

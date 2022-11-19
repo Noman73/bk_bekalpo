@@ -12,7 +12,7 @@ class FeatureRequestController extends Controller
     {
         $this->middleware('auth');
     }
-    public function store(Request $request,$id)
+    public function store($locale='en',Request $request,$id)
     {
         // return response()->json($request->all());
         $validator=Validator::make($request->all(),[

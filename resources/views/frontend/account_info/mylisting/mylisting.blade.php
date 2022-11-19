@@ -21,9 +21,9 @@
                         @endif
                     </ul>
                     <div class="">
-                        <button  class="btn btn-sm btn-primary promoteRow" data-url="{{route('users.myad_promote',$post->id)}}">Promote</button>
-                        <button  class="btn btn-sm btn-primary m-1 edit" data-url="{{route('users.post.edit',$post->id)}}">Edit</button>
-                        <button  class="deleteRow btn btn-sm btn-primary" data-url="{{route('users.my_post_action',$post->id)}}">Delete</button>
+                        <button  class="btn btn-sm btn-primary promoteRow" data-url="{{URL::to(app()->getLocale().'/myad_promote'.'/'.$post->id)}}">Promote</button>
+                        <button  class="btn btn-sm btn-primary m-1 edit" data-url="{{URL::to(app()->getLocale().'/post'.'/'.$post->id.'/edit')}}">Edit</button>
+                        <button  class="deleteRow btn btn-sm btn-primary" data-url="{{URL::to(app()->getLocale().'/my_post_action'.'/'.$post->id)}}">Delete</button>
                     </div>
                 </div>
                 <div class="item-right">

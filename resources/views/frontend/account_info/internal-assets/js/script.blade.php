@@ -120,7 +120,7 @@
         e.preventDefault()
         let link=$(this).attr('href')
         let page=link.split('page=')[1];
-        $.get("{{URL::to('/my_ads')}}?page="+page)
+        $.get("{{URL::to(app()->getLocale().'/my_ads')}}?page="+page)
         .then(response=>{
             $('#my-listing').html(response);
             

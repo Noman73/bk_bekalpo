@@ -32,22 +32,22 @@ class PostShowController extends Controller
         return view('guest.allads.alladrender',compact('posts'))->render();
     }
 
-    public function getMyAds()
+    public function getMyAds($locale='en')
     {
         $posts=Post::with('division','district','images','brand')->where('user_id',auth()->user()->id)->whereIn('status',[1,2,7])->orderBy('updated_at','desc')->paginate(2);
         return view('frontend.account_info.mylisting.mylisting',compact('posts'))->render();
     }
-    public function getMyFavAds()
+    public function getMyFavAds($locale="en")
     {
         // $posts=Favourite::with('posts')->where('user_id',auth()->user()->id)->paginate(5);
-        
+        $lang_name="name_".app()->getLocale();
         $posts=DB::table("favourites")
                    ->join('posts','posts.id','=','favourites.post_id')
                    ->join('divisions','divisions.id','=','posts.division_id')
                    ->join('districts','districts.id','=','posts.district_id')
                    ->leftjoin('brands','brands.id','=','posts.brand_id')
                    ->leftjoin('images','posts.id','=','images.post_id')
-                   ->select('posts.id','brands.name as brand_name','images.image','divisions.name as division_name','districts.name as district_name','posts.title','posts.created_at','posts.condition','posts.price','posts.status')
+                   ->select('posts.id','brands.'.$lang_name.' as brand_name','images.image','divisions.'.$lang_name.' as division_name','districts.'.$lang_name.' as district_name','posts.title','posts.created_at','posts.condition','posts.price','posts.status')
                    ->where('favourites.user_id',auth()->user()->id)
                 //    ->where('posts.status',2)
                    ->groupBy('posts.id')

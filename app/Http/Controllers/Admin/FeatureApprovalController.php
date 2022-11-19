@@ -33,6 +33,7 @@ class FeatureApprovalController extends Controller
      */
     public function create()
     {
+        // return $get=Featured::with('post')->get();
         if (request()->ajax()){
             $get=Featured::with('post')->get();
             return DataTables::of($get)
@@ -48,27 +49,28 @@ class FeatureApprovalController extends Controller
             return (isset($get->post->title) ? $get->post->title: '');
         })
         ->addColumn('status',function($get){
+        //    return ($get->post);
             switch ($get->post->status) {
                 case 1:
-                   return 'Reviewing';
+                    return "<p style='background:blue;'>review</p>";
                     break;
                 case 2:
-                   return 'Aproved';
+                    return "<p style='background:green;'>Aproved</p>";
                     break;
                 case 3:
-                   return 'Rejected';
+                    return "<p style='background:grey;'>reject</p>";
                     break;
                 case 4:
-                   return 'Need Edit';
+                    return "<p style='background:white;color:black;'>Need Edit</p>";
                     break;
                 case 5:
-                   return 'Hard Reject';
+                    return "<p style='background:red;'>Reported</p>";
                     break;
                 case 6:
-                   return 'Sold';
+                    return "<p style='background:red;'>Deleted</p>";
                     break;
                 case 7:
-                   return 'Permanently Deleted';
+                    return "<p style='background:grey;'>Sold</p>";
                     break;
                 default:
                     # code...

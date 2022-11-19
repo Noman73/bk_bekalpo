@@ -9,6 +9,7 @@ bekalpo.com | Easy Buy, Easy Sell
     }
 </style>
 <link rel="stylesheet" href="{{asset('storage/dependencies/image-uploader/dist/image-uploader.min.css')}}">
+<link rel="stylesheet" href="{{asset('storage/dependencies/image-upload-new/jquery.uploader.css')}}">
 @endsection
 @section('content')
 <section class="inner-page-banner" data-bg-image="{{asset('storage/')}}/media/banner/banner.jpg">
@@ -205,7 +206,8 @@ bekalpo.com | Easy Buy, Easy Sell
                             <h3 class="item-title">Images</h3>
                         </div>
                         <div class="form-group">
-                            <div class="input-images"></div>
+                            {{-- <div class="input-images"></div> --}}
+                            <input type="text" id="demo3" value="">
                         </div>
                     </div>
                     <div class="post-section post-contact">
@@ -305,12 +307,49 @@ bekalpo.com | Easy Buy, Easy Sell
 {{-- <script src="{{asset('storage/frontend/custom/js/form-generate.js')}}"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('storage/dependencies/image-uploader/dist/image-uploader.min.js')}}"></script>
+<script src="{{asset('storage/dependencies/image-upload-new/jquery.uploader.min.js')}}"></script>
 <script src="{{asset('storage/dependencies/countdown/countdown.js')}}"></script>
 <script src="{{asset('storage/dependencies/compressor/compressor.js')}}"></script>
+<script>
+// IMAGE UPLOAD NEW
+var imagesFiles=[];
+let ajaxConfig = {
+        ajaxRequester: function (config, uploadFile, pCall, sCall, eCall) {
+            console.log(uploadFile)
+            if(imagesFiles.length<=4 && ){
+                console.log(imagesFiles.length)
+                imagesFiles.push(uploadFile.file);
+            }else{
+                $('.jquery-uploader-select-card').addClass('d-none')
+            }
+            let progress = 0
+            let interval = setInterval(() => {
+                progress += 10;
+                pCall(progress)
+                if (progress >= 100) {
+                    clearInterval(interval)
+                    const windowURL = window.URL || window.webkitURL;
+                    sCall({
+                        data: windowURL.createObjectURL(uploadFile.file)
+                    })
+                    // eCall("上传异常")
+                }
+            }, 300)
+        }
+    }
+let imageData=$("#demo3").uploader({
+        multiple: true,
+        ajaxConfig: ajaxConfig
+    });
+</script>
+
+
 @include('frontend.post.internal-assets.js.script')
 <script>
 $('.input-images').imageUploader({
     maxFiles:5,
 });
+
+
 </script>
 @endsection

@@ -1,3 +1,7 @@
+@php
+$lang_name="name_".app()->getLocale();
+@endphp
+
 @extends('layouts.guest.master')
 @push('title')
 bekalpo.com | Easy Buy, Easy Sell 
@@ -56,7 +60,7 @@ bekalpo.com | Easy Buy, Easy Sell
                     <div class="post-section post-type">
                         <div class="post-ad-title">
                             <i class="fa fa-tags"></i>
-                            <h3 class="item-title">Select Type</h3>
+                            <h3 class="item-title">@lang('lang.pages.post.fields.select_type.ad_type')</h3>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
@@ -93,7 +97,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                 <div class="form-group">
                                     <select disabled class="form-control select-box" name="category" id="category">
                                         <option value="">--SELECT--</option>
-                                        <option selected value="{{$post->category_id}}">{{$post->category->name}}</option>
+                                        <option selected value="{{$post->category_id}}">{{$post->category->$lang_name}}</option>
                                     </select>
                                     <div class="invalid-feedback" id="category_msg">
                                     </div>
@@ -110,7 +114,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select disabled class="form-control select-box" name="sub_category" id="sub_category">
-                                        <option selected value="{{$post->subcategory_id}}">{{$post->subcategory->name}}</option>
+                                        <option selected value="{{$post->subcategory_id}}">{{$post->subcategory->$lang_name}}</option>
                                     </select>
                                     <div class="invalid-feedback" id="sub_category_msg">
                                     </div>
@@ -127,7 +131,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select disabled class="form-control select-box" id="cities">
-                                        <option value="{{$post->division_id}}">{{$post->division->name}}</option>
+                                        <option value="{{$post->division_id}}">{{$post->division->$lang_name}}</option>
                                     </select>
                                     <div class="invalid-feedback" id="cities_msg">
                                     </div>
@@ -144,7 +148,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select disabled class="form-control select-box" id="areas">
-                                        <option value="{{$post->district_id}}">{{$post->district->name}}</option>
+                                        <option value="{{$post->district_id}}">{{$post->district->$lang_name}}</option>
                                     </select>
                                     <div class="invalid-feedback" id="areas_msg">
                                     </div>
@@ -462,7 +466,7 @@ bekalpo.com | Easy Buy, Easy Sell
 {{-- @include('frontend.post.internal-assets.js.script') --}}
 <script src="{{asset('storage/dependencies/compressor/compressor.js')}}"></script>
 @include('frontend.post.internal-assets.js.edit-script')
-<script src="{{asset('storage/frontend/custom/js/form-generate-edit.js')}}"></script>
+@include('frontend.post.internal-assets.js.custom.form-generate-edit')
 <script>
 $('.input-images').imageUploader({
     maxFiles:5,

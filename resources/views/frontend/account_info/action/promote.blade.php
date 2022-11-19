@@ -13,7 +13,7 @@
                 <div class="list-view-layout1">
                   <div class="product-box-layout3 ">
                       <div class="item-img">
-                          <a href="{{URL::to('/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}" class="item-trending"><img src="{{asset('storage/post_image').'/'.(isset($post->images[0]->image) ? $post->images[0]->image : '' )}}" alt="Product"></a>
+                          <a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}" class="item-trending"><img src="{{asset('storage/post_image').'/'.(isset($post->images[0]->image) ? $post->images[0]->image : '' )}}" alt="Product"></a>
                       </div>
                       <div class="item-content">
                           <h3 class="item-title">{{$post->title}}</h3>

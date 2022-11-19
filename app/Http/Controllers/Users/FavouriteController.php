@@ -11,7 +11,7 @@ class FavouriteController extends Controller
     {
         $this->middleware('auth');
     }
-    public function addFav($post_id)
+    public function addFav($locale='en',$post_id)
     {
         $existance=Favourite::where('user_id',auth()->user()->id)->where('post_id',$post_id)->count();
         if($existance<=0){
