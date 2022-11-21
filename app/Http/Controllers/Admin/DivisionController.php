@@ -105,8 +105,8 @@ class DivisionController extends Controller
     public function update(Request $request, $id)
     {
         $validator=Validator::make($request->all(),[
-            'name_en'=>"required|max:200|min:1|unique:divisions,name_en,".$id,
-            'name_bn'=>"required|max:200|min:1|unique:divisions,name_bn,".$id,
+            'name_en'=>"required|max:200|min:1",
+            'name_bn'=>"required|max:200|min:1",
         ]);
 
         if($validator->passes()){
