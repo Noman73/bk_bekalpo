@@ -17,6 +17,7 @@ function getBrand(status){
             let unittype="<option value=''>- Select an Option -</option>"
             let model="<option value=''>- Select an Option -</option>"
             response.brand.original.forEach(function(d){
+                console.log(d['name_'+lang])
                 brand+="<option value='"+d.id+"'>"+d['name_'+lang]+"</option>"
             })
             response.feature.original.forEach(function(d){

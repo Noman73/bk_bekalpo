@@ -1,5 +1,6 @@
 @php
 $lang_name="name_".app()->getLocale();
+// dd($post);
 @endphp
 
 @extends('layouts.guest.master')

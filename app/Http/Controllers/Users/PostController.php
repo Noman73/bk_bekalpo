@@ -272,7 +272,7 @@ class PostController extends Controller
      */
     public function update(Request $request,$locale='en', $id)
     {
-        return count($request->images);
+        // return count($request->images);
         // return array_filter(explode(',',$request->delete_index));
         // return response()->json($request->all());
         ($request->has('price_type') ? $price_type='required' : $price_type='nullable');
@@ -329,6 +329,7 @@ class PostController extends Controller
             'areas'=>"required|max:200|min:1",
             'phones'=>["required","max:11","min:1",new phoneValidateRule()],
             // 'otp'=>['required','max:6','min:6'],
+            'images'=>'required|array|min:1|max:5',
             'images.*'=>'required|image|mimes:jpeg,png,jpg,svg|max:2024',
         ]);
         if($validator->passes()){
