@@ -36,6 +36,7 @@ return [
             'registration_year'=>'নিবন্ধনের বছর',
             'description'=>'বিবরন',
             'price'=>'দাম',
+            'images'=>'ছবি যুক্ত করুন',
             'price_type'=>[
                 'title'=>"দামের ধরণ",
                 'fixed'=>"স্থির",
@@ -50,6 +51,11 @@ return [
             'capacity'=>"ক্ষমতা",
         ],
         'contact_details'=>[
+            'title'=>"যোগাযোগ মাধ্যম",
+            'add_phone'=>"ফোন নম্বর যুক্ত করুন",
+            'add'=>"যুক্ত করুন",
+            'verify'=>"ভেরিফাই করুন",
+            'otp'=>"ওটিপি কোড",
             'phone'=>'ফোন',
             'phone_add_btn'=>'নাম্বার যুক্ত করুন',
             'submit_btn'=>'সাবমিট করুন',

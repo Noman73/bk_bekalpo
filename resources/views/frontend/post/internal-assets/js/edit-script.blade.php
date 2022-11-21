@@ -6,7 +6,7 @@
     var lines = post.split("\n"); //multiLines contains your text
     for(var i=0; i<lines.length; i++){
     if(lines[i].startsWith(" ")){
-        line +=" "+lines[i].trim();  
+        line +=" "+lines[i].trim(); 
     }else{
         line +=" "+lines[i].trim();
     }    
@@ -51,11 +51,12 @@
         for (let i = 0; i < post.fueltypemark.length; i++) {
         $("input[name='fueltype[]'][value=" + post.fueltypemark[i].fueltype_id + "]").prop('checked', true);
         }
-        let images=''
-        for (let i = 0; i < post.images.length; i++) {
-        images+=`<span><img style="max-height:100px;" src="`+url+`/storage/post_image/`+post.images[i].image+`"><button data-index="`+i+`" class="btn btn-sm btn-danger image-delete" type="button"><i class="fas fa-minus"></i></button></span>`
-        }
-        $('.images').html(images);
+
+        // let images=''
+        // for (let i = 0; i < post.images.length; i++) {
+        // images+=`<span><img style="max-height:100px;" src="{{URL::to('/')}}/storage/post_image/`+post.images[i].image+`"><button data-index="`+i+`" class="btn btn-sm btn-danger image-delete" type="button"><i class="fas fa-minus"></i></button></span>`
+        // }
+        // $('.images').html(images);
     }
     $(document).on('click','.image-delete',function(){
         index=$(this).data('index');
@@ -116,7 +117,7 @@
     $(document).on('change','#brand',function(){
         let brand=$(this).val();
         if(brand!=''){
-            $.get("{{URL::to('/get-model')}}/"+brand)
+            $.get("{{URL::to(app()->getLocale().'/get-model')}}/"+brand)
             .then(response=>{
                 let model="<option value=''>- Select an Option -</option>";
                 response.forEach(function(d){
@@ -127,7 +128,8 @@
         }
     });
     function formRequest(){
-    let images=document.getElementsByName('images[]')[0].files;
+    let images=imagesFiles;
+
     let title=$('#title').val();
     let ad_type=$('#ad_type').val();
     let category=$('#category').val();

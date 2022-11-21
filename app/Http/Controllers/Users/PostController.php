@@ -270,8 +270,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$locale='en', $id)
     {
+        return count($request->images);
         // return array_filter(explode(',',$request->delete_index));
         // return response()->json($request->all());
         ($request->has('price_type') ? $price_type='required' : $price_type='nullable');
@@ -343,7 +344,6 @@ class PostController extends Controller
                 $post->price=$request->price;
             }
             if ($request->condition){
-
                 $post->condition=$request->condition;
             }
             if ($request->brand){
@@ -405,10 +405,10 @@ class PostController extends Controller
             $post->save();
            $del_index=array_filter(explode(',',$request->delete_index),'is_numeric');
             $image=Image::where('post_id',$post->id)->get();
-            if(request()->hasFile('images') || $image->count()>count($del_index)){
-                foreach($del_index as $index){
-                    unlink(storage_path('app/public/post_image/'.$image[$index]->image));
-                    Image::where('id',$image[$index]->id)->delete();
+            if(request()->hasFile('images') && count($request->images) <=5){
+                foreach($image as $img){
+                    unlink(storage_path('app/public/post_image/'.$img->image));
+                    Image::where('id',$img->id)->delete();
                 }
             }
             if($post && count(explode(',',$request->feature))>0 && isset($request->feature)){

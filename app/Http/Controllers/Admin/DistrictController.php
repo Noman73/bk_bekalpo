@@ -117,8 +117,8 @@ class DistrictController extends Controller
     public function update(Request $request, $id)
     {
         $validator=Validator::make($request->all(),[
-            'name_en'=>"required|max:200|min:1|unique:districts,name_en,".$id,
-            'name_bn'=>"required|max:200|min:1|unique:districts,name_en,".$id,
+            'name_en'=>"required|max:200|min:1",
+            'name_bn'=>"required|max:200|min:1",
             'cities'=>"required|max:200|min:1",
             'city'=>"nullable|max:200|min:1",
         ]);

@@ -36,6 +36,7 @@ return [
             'registration_year'=>'Registration Year',
             'description'=>'Description',
             'price'=>'Price',
+            'images'=>'Images',
             'price_type'=>[
                 'title'=>"Price Type",
                 'fixed'=>"Fixed",
@@ -50,10 +51,14 @@ return [
             'capacity'=>"Capacity",
         ],
         'contact_details'=>[
+            'title'=>"Contact Details",
+            'add_phone'=>"Add Phone Number",
+            'add'=>"Add",
+            'verify'=>"Verify",
+            'otp'=>"Otp Code",
             'phone'=>'Phone',
             'phone_add_btn'=>'Phone Ad Btn',
             'submit_btn'=>'Submit Btn',
-
         ],
 
     ],

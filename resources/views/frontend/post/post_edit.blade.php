@@ -28,6 +28,7 @@ bekalpo.com | Easy Buy, Easy Sell
 } */
 </style>
 <link rel="stylesheet" href="{{asset('storage/dependencies/image-uploader/dist/image-uploader.min.css')}}">
+<link rel="stylesheet" href="{{asset('storage/dependencies/image-upload-new/jquery.uploader.css')}}">
 @endsection
 @section('content')
 <section class="inner-page-banner" data-bg-image="{{asset('storage/')}}/media/banner/banner.jpg">
@@ -35,12 +36,12 @@ bekalpo.com | Easy Buy, Easy Sell
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumbs-area">
-                    <h1>Post an Ad</h1>
+                    <h1>@lang('lang.pages.post.banner_text')</h1>
                     <ul>
                         <li>
-                            <a href="index-2.html">Home</a>
+                            <a href="index-2.html">@lang('lang.pages.allads.header.home')</a>
                         </li>
-                        <li>Post an Ad</li>
+                        <li>@lang('lang.pages.post.banner_text')</li>
                     </ul>
                 </div>
             </div>
@@ -60,20 +61,20 @@ bekalpo.com | Easy Buy, Easy Sell
                     <div class="post-section post-type">
                         <div class="post-ad-title">
                             <i class="fa fa-tags"></i>
-                            <h3 class="item-title">@lang('lang.pages.post.fields.select_type.ad_type')</h3>
+                            <h3 class="item-title">@lang('lang.pages.post.select_type')</h3>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Ad Type
+                                    @lang('lang.pages.post.fields.select_type.ad_type')
                                     <span>*</span>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select disabled class="form-control select-box" name="ad_type" id="ad_type" >
-                                        <option {{$post->ad_type==1 ? 'selected' : ""}} value="1">Sell</option>
-                                        <option {{$post->ad_type==2 ? 'selected' : ""}} value="2">Buy</option>
+                                        <option {{$post->ad_type==1 ? 'selected' : ""}} value="1">@lang('lang.pages.allads.sell')</option>
+                                        <option {{$post->ad_type==2 ? 'selected' : ""}} value="2">@lang('lang.pages.allads.buy')</option>
                                     </select>
                                     <div class="invalid-feedback" id="ad_type_msg">
                                     </div>
@@ -84,19 +85,19 @@ bekalpo.com | Easy Buy, Easy Sell
                     <div class="post-section post-category">
                         <div class="post-ad-title">
                             <i class="fa fa-tags"></i>
-                            <h3 class="item-title">Select Category</h3>
+                            <h3 class="item-title">@lang('lang.pages.post.fields.select_category.title')</h3>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Category
+                                    @lang('lang.pages.post.fields.select_category.category')
                                     <span>*</span>
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
                                     <select disabled class="form-control select-box" name="category" id="category">
-                                        <option value="">--SELECT--</option>
+                                        <option value="">--@lang('lang.pages.allads.select_an_option')--</option>
                                         <option selected value="{{$post->category_id}}">{{$post->category->$lang_name}}</option>
                                     </select>
                                     <div class="invalid-feedback" id="category_msg">
@@ -107,7 +108,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row " id="init_sub_category">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Sub Category
+                                    @lang('lang.pages.post.fields.select_category.sub_category')
                                     <span>*</span>
                                 </label>
                             </div>
@@ -124,7 +125,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row" id="init_division">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Cities
+                                    @lang('lang.pages.post.fields.select_type.cities')
                                     <span>*</span>
                                 </label>
                             </div>
@@ -141,7 +142,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row" id="init_location">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Areas
+                                    @lang('lang.pages.post.fields.select_type.areas')
                                     <span>*</span>
                                 </label>
                             </div>
@@ -159,12 +160,12 @@ bekalpo.com | Easy Buy, Easy Sell
                     <div class="post-section post-information">
                         <div class="post-ad-title">
                             <i class="fa fa-folder-open"></i>
-                            <h3 class="item-title">Product Information</h3>
+                            <h3 class="item-title">@lang('lang.pages.post.fields.product_information.title')</h3>
                         </div>
                         <div class="row" id="init_title">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Title
+                                    @lang('lang.pages.post.fields.product_information.ad_title')
                                     <span>*</span>
                                 </label>
                             </div>
@@ -326,7 +327,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Description
+                                    @lang('lang.pages.post.fields.product_information.description')
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -340,7 +341,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row" id="init_price">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Price
+                                    {{__('lang.pages.post.fields.product_information.price')}}
                                     <span>*</span>
                                 </label>
                             </div>
@@ -358,25 +359,26 @@ bekalpo.com | Easy Buy, Easy Sell
                     <div class="post-section post-img" id="init_image">
                         <div class="post-ad-title">
                             <i class="far fa-image"></i>
-                            <h3 class="item-title">Images</h3>
+                            <h3 class="item-title"> {{__('lang.pages.post.fields.product_information.images')}}</h3>
                         </div>
                         <div class="images">
 
                         </div>
                         <div class="form-group">
-                            <div class="input-images"></div>
+                            {{-- <div class="input-images"></div> --}}
+                            <input type="text" id="demo3" value="">
                         </div>
                     </div>
                     <div class="post-section post-contact">
                         <div class="post-ad-title">
                             <i class="fa fa-user"></i>
-                            <h3 class="item-title">Contact Details <div class="float-right ml-4"  id="countdown"></div></h3>
+                            <h3 class="item-title"> {{__('lang.pages.post.fields.contact_details.title')}} <div class="float-right ml-4"  id="countdown"></div></h3>
                         </div>
                         {{--  --}}
                         <div class="row" id="init_phones">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Phones
+                                    {{__('lang.pages.post.fields.contact_details.phone')}}
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -393,7 +395,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="btn btn-sm btn-success mb-3" id="new-phone-btn">Add Phone Number <i class="fa fa-plus"></i></button>
+                                    <button class="btn btn-sm btn-success mb-3" id="new-phone-btn">{{__('lang.pages.post.fields.contact_details.add_phone')}} <i class="fa fa-plus"></i></button>
                                 </div>
                             </div>
                             
@@ -402,14 +404,14 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row d-none" id="init_add_phone">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    Phone
+                                    {{__('lang.pages.post.fields.contact_details.phone')}}
                                 </label>
                             </div>
                             <div class="col-sm-9">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Enter Phone Number" aria-label="Recipient's username" aria-describedby="basic-addon2" name="phone" id="phone">
                                     <div class="input-group-append">
-                                      <button class="btn btn-success text-dark" type="button" id="otp_btn">Verify</button>
+                                      <button class="btn btn-success text-dark" type="button" id="otp_btn">{{__('lang.pages.post.fields.contact_details.verify')}}</button>
                                     </div>
                                     <div class="invalid-feedback" id="phone_msg">
                                     </div>
@@ -420,7 +422,7 @@ bekalpo.com | Easy Buy, Easy Sell
                         <div class="row mt-3 d-none" id="otp_input">
                             <div class="col-sm-3">
                                 <label class="control-label">
-                                    OTP Code
+                                    {{__('lang.pages.post.fields.contact_details.otp')}}
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -428,7 +430,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                     {{--  --}}
                                     <input type="text" class="form-control" placeholder="Enter Otp Number"  aria-describedby="basic-addon2" name="otp" id="otp">
                                     <div class="input-group-append">
-                                      <button class="btn btn-success text-dark" type="button" id="add-phone">Add</button>
+                                      <button class="btn btn-success text-dark" type="button" id="add-phone">{{__('lang.pages.post.fields.contact_details.add')}}</button>
                                     </div>
                                     <div class="invalid-feedback" id="otp_msg">
                                     </div>
@@ -445,13 +447,12 @@ bekalpo.com | Easy Buy, Easy Sell
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
-                                    <button onclick="formRequest()" type='submit' class="submit-btn" >Submit Listing</button>
+                                    <button onclick="formRequest()" type='submit' class="submit-btn" >{{__('lang.pages.post.fields.contact_details.submit_btn')}}</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
-                
             </div>
         </div>
     </div>
@@ -461,15 +462,108 @@ bekalpo.com | Easy Buy, Easy Sell
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('storage/dependencies/image-uploader/dist/image-uploader.min.js')}}"></script>
+<script src="{{asset('storage/dependencies/image-upload-new/jquery.uploader.min.js')}}"></script>
 <script src="{{asset('storage/dependencies/countdown/countdown.js')}}"></script>
 
 {{-- @include('frontend.post.internal-assets.js.script') --}}
 <script src="{{asset('storage/dependencies/compressor/compressor.js')}}"></script>
+
+
+<script>
+    // IMAGE UPLOAD NEW
+
+    var imageObj=[];
+    var imageData;
+    var imagesFiles=[];
+$(document).ready(function(){
+    // image source convert to file 
+    const toDataURL = url => fetch(url)
+      .then(response => response.blob())
+      .then(blob => new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onloadend = () => resolve(reader.result)
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+     }))
+  function dataURLtoFile(dataurl, filename) {
+     var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+     bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+     while(n--){
+     u8arr[n] = bstr.charCodeAt(n);
+     }
+    return new File([u8arr], filename, {type:mime});
+  }
+    // image convert end
+    post.images.forEach(function(d,index){ 
+        // image conversion
+        toDataURL("{{URL::to('/')}}/storage/post_image/"+d.image)
+            .then(dataUrl => {
+            //  console.log('Here is Base64 Url', dataUrl)
+            var fileData = dataURLtoFile(dataUrl, d.image);
+            //  console.log("Here is JavaScript File Object",fileData)
+            imagesFiles.push(fileData)
+        })
+        // image conversion end
+        imageObj.push({name:d.image,url:"{{URL::to('/')}}/storage/post_image/"+d.image});
+    })
+    console.log(imageObj)
+    
+    let ajaxConfig = {
+            ajaxRequester: function (config, uploadFile, pCall, sCall, eCall) {
+                console.log(uploadFile)
+                if(imagesFiles.length<=4){
+                    console.log(imagesFiles.length)
+                    imagesFiles.push(uploadFile.file);
+                }else{
+                    $('.jquery-uploader-select-card').addClass('d-none')
+                }
+                let progress = 0
+                let interval = setInterval(() => {
+                    progress += 10;
+                    pCall(progress)
+                    if (progress >= 100) {
+                        clearInterval(interval)
+                        const windowURL = window.URL || window.webkitURL;
+                        sCall({
+                            data: windowURL.createObjectURL(uploadFile.file)
+                        })
+                        // eCall("上传异常")
+                    }
+                }, 300)
+            }
+        }
+        imageData=$("#demo3").uploader({
+            multiple: true,
+            defaultValue:imageObj,
+            ajaxConfig: ajaxConfig
+        });
+        var uploaderArr=document.getElementsByClassName('jquery-uploader-card');
+        console.log(uploaderArr.length)
+        for (let index = 0; index < uploaderArr.length; index++) {
+            const element = uploaderArr[index];
+            console.log(uploaderArr[index])
+            $(uploaderArr[index]).attr('data-img',index)
+        }
+        $(document).on('click',".file-delete",function(){
+            dt=$(this).parent().parent().parent().parent().data('img');
+            console.log(dt);
+            imagesFiles.splice(dt,1);
+            console.log(imagesFiles)
+        })
+    })  
+    </script>
+    
 @include('frontend.post.internal-assets.js.edit-script')
 @include('frontend.post.internal-assets.js.custom.form-generate-edit')
 <script>
-$('.input-images').imageUploader({
-    maxFiles:5,
-});
+// $('.input-images').imageUploader({
+//     maxFiles:5,
+// });
+
+
+
+
+
+
 </script>
 @endsection
