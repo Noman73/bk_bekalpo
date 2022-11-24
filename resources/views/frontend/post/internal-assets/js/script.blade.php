@@ -37,13 +37,14 @@
     });
 
     $(document).on('change','#cities',function(){
+        let mylocation="{{auth()->user()->district_id}}"
         let division=$(this).val();
         if(division!=''){
             $.get("{{URL::to(app()->getLocale().'/get-location')}}/"+division)
             .then(response=>{
                 let location="<option value=''>- {{__('lang.pages.allads.select_an_option')}} -</option>";
                 response.forEach(function(d){
-                    location+="<option value='"+d.id+"'>"+d['name_'+lang]+"</option>";
+                    location+="<option value='"+d.id+"' "+((d.id==mylocation) ? "selected" : '' )+">"+d['name_'+lang]+"</option>";
                 })
                 $('#areas').html(location);
             })
@@ -64,6 +65,12 @@
     });
     function formRequest(){
     // let images=document.getElementsByName('images[]')[0].files;
+    if(imagesFiles.length==0){
+        $('.submit-btn').attr('title','Fill the form properly');
+        $('.submit-btn').attr('disabled',true);
+    }else{
+        $('.submit-btn').attr('disabled',false);
+    }
     let images=imagesFiles;
     let title=$('#title').val();
     let ad_type=$('#ad_type').val();
@@ -245,7 +252,73 @@ function getPhoneNumbers(){
         $('#phones').html(numbers);
     })
 }
+
 $(document).ready(function(){
     getPhoneNumbers();
+    $('#cities').trigger('change');
 })
+
+// location modal
+
+$(document).on('click','#locationModal',function(){
+    $.get("{{URL::to(app()->getLocale().'/get-location-modal')}}")
+    .then(response=>{
+        $('#renderModal').html(response);
+        $('.locationModal').modal('show');
+    })
+});
+
+function cities(val,divname){
+    city=val;
+    let division=val;
+        if(division!=''){
+            $.get("{{URL::to(app()->getLocale().'/get-city-location')}}/"+division)
+            .then(response=>{
+                let location=`<span class="m-3"><strong>Select a local area in `+divname+`
+                              </strong></span><ul class='list-group list-group-flush text-color'>`;
+                    location+=`<li onclick="allCities(`+division+`,'`+String(divname)+`')" class='list-group-item color'>All Of `+divname+` <i class='fa fa-angle-right mt-1 float-right'></i></li>`;
+                response.forEach(function(d){
+                    location+=`<li onclick="locaTion(`+d.id+`,'`+String(d['name_'+lang])+`')" class='list-group-item color'>`+d['name_'+lang]+` <i class='fa fa-angle-right mt-1 float-right'></i></li>`;
+                    // location+="<option value='"+d.id+"'>"+d.name+"</option>";
+                })
+                location+="</ul>"
+                $('#right-part').html(location);
+            })
+        }
+        modalResponsive();
+        filter();
+}
+
+function areas(val,divname){
+    city=val;
+    let division=val;
+        if(division!=''){
+            $.get("{{URL::to(app()->getLocale().'/get-area-location')}}/"+division)
+            .then(response=>{
+                let location=`<span class="m-3"><strong>Select a local area in `+divname+`
+                              </strong></span><ul class='list-group list-group-flush text-color'>`;
+                    location+=`<li onclick="allAreas(`+division+`,'`+String(divname)+` Division')" class='list-group-item color'>All Of `+divname+` Division<i class='fa fa-angle-right mt-1 float-right'></i></li>`;
+                response.forEach(function(d){
+                    location+=`<li onclick="locaTion(`+d.id+`,'`+String(d['name_'+lang])+`')" class='list-group-item color'>`+d['name_'+lang]+` <i class='fa fa-angle-right mt-1 float-right'></i></li>`;
+                    // location+="<option value='"+d.id+"'>"+d.name+"</option>";
+                })
+                location+="</ul>"
+                $('#right-part').html(location);
+                console.log(location)
+            })
+        }
+        modalResponsive();
+        filter();
+}
+
+function locaTion(val,name){
+    loc=val;
+    $('#locationModal').text(name);
+    $('.locationModal').modal('hide');
+    setTimeout(() => {
+        $('.locationModal').remove();
+    },250)
+}
+// location modal end 
+
 </script>

@@ -10,6 +10,7 @@ bekalpo.com | {{$post->title}}
 @endpush
 @section('content')
 @section('link')
+<link rel="stylesheet" href="{{asset('storage/dependencies/fullscreen-img/css/custom.css')}}">
 <style>
     .nav-tabs img{
         width: 120px;
@@ -22,6 +23,13 @@ bekalpo.com | {{$post->title}}
 @php
 use App\Http\Traits\Number;
 $lang_name="name_".app()->getLocale();
+$lang=app()->getLocale();
+$date= date('d',strtotime($post->created_at));
+$month= date('m',strtotime($post->created_at));
+$year= date('Y',strtotime($post->created_at));
+$hour= date('h',strtotime($post->created_at));
+$minute= date('i',strtotime($post->created_at));
+$time_format= date('A',strtotime($post->created_at));
 
 @endphp
 <!--=====================================-->
@@ -58,7 +66,8 @@ $lang_name="name_".app()->getLocale();
                                     </div>
                                     <div class="single-entry-meta">
                                         <ul>
-                                            <li><i class="fa fa-clock"></i>{{date('M-d-Y h:i',strtotime($post->created_at))}} </li>
+                                            
+                                            <li><i class="fa fa-clock"></i>{{Number::bnMonth($month,$lang).' '.Number::num($date,$lang).'-'.Number::num($year,$lang).' '.Number::num($hour,$lang).':'.Number::num($minute,$lang)}}  </li>
                                             <li><i class="fa fa-map-marker-alt"></i>{{$post->division->$lang_name}}, {{$post->district->$lang_name}}</li>
                                         </ul>
                                         @if($post->condition!=null)
@@ -279,7 +288,7 @@ $lang_name="name_".app()->getLocale();
                                 <div class="item-content">
                                     <h3 class="item-title"><a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',$rel->title.'/'.$rel->id)}}">{{$rel->title}}</a></h3>
                                     <ul class="entry-meta">
-                                        <li><i class="fa fa-clock"></i>{{$rel->created_at}}</li>
+                                        <li><i class="fa fa-clock"></i>{{Number::bnMonth($month,$lang).' '.Number::num($date,$lang).'-'.Number::num($year,$lang).' '.Number::num($hour,$lang).':'.Number::num($minute,$lang)}}  </li>
                                         <li><i class="fa fa-map-marker-alt"></i>{{$rel->division->$lang_name}}, {{$rel->district->$lang_name}}</li>
                                     </ul>
                                     <div class="item-price">
@@ -339,6 +348,7 @@ $lang_name="name_".app()->getLocale();
 <script src="{{asset('storage/dependencies/elevatezoom/js/jquery.elevateZoom-2.2.3.min.js')}}"></script>
 <script src="{{asset('storage/dependencies/watermark/watermark.js')}}">
 </script>
+<script src="{{asset('storage/dependencies/fullscreen-img/js/jquery.photobox.js')}}"></script>
     @include('frontend.single-ad.internal-assets.js.script')
     @push('scripts')
     <script src="{{asset('storage/dependencies/c-share/c-share.js')}}"></script>
@@ -349,6 +359,7 @@ $lang_name="name_".app()->getLocale();
         });
     </script>
     <script>
+       
         function emailSend(){
             subject=$('#subject').val();
             message=$('#message').val();
@@ -397,10 +408,11 @@ $lang_name="name_".app()->getLocale();
                 }
             })
         }
+
+
+        $(function(){
+            $(".zoom_01").pan();
+        })
     </script>
     @endpush
-
-<script>
-
-</script>
 @endsection

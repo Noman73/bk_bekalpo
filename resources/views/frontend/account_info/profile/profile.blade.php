@@ -28,7 +28,7 @@ $lang_name="name_".app()->getLocale();
                 <div class="row mt-4">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Full Name
+                            {{__('lang.pages.signup.full_name')}}
                         </label>
                     </div>
                     <div class="col-sm-9">
@@ -40,7 +40,7 @@ $lang_name="name_".app()->getLocale();
                 <div class="row">
                     <div class="col-sm-3">
                             <label class="control-label">
-                                Gender
+                                {{__('lang.pages.signup.gender')}}
                             </label>
                         </div>
                         <div class="col-sm-9">
@@ -48,19 +48,20 @@ $lang_name="name_".app()->getLocale();
                                 <div class="form-check form-radio-btn">
                                     <input  class="form-check-input" type="radio" {{($data->gender==1 ? 'checked' : '' )}}  name="gender[]" value="1">
                                     <label class="form-check-label" for="condition">
-                                        Male
+                                        {{__('lang.pages.signup.male')}}
                                     </label>
                                 </div>
                                 <div class="form-check form-radio-btn">
                                     <input  class="form-check-input" type="radio" {{($data->gender==2 ? 'checked' : '' )}} name="gender[]" value="2">
                                     <label class="form-check-label" for="condition">
-                                        Female
+                                        {{__('lang.pages.signup.female')}}
                                     </label>
                                 </div>
                                 <div class="form-check form-radio-btn">
                                     <input class="form-check-input" type="radio" {{($data->gender==3 ? 'checked' : '' )}} name="gender[]" value="3" >
                                     <label class="form-check-label" for="condition">
-                                        Others
+                                        {{__('lang.pages.signup.others')}}
+
                                     </label>
                                 </div>
                                 <div class="invalid-feedback" id="gender_msg">
@@ -71,7 +72,7 @@ $lang_name="name_".app()->getLocale();
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Phone
+                            {{__('lang.pages.signup.phone')}}
                         </label>
                     </div>
                     <div class="col-sm-9">
@@ -84,12 +85,12 @@ $lang_name="name_".app()->getLocale();
             <div class="post-section location-detail">
                 <div class="post-ad-title">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3 class="item-title">Location</h3>
+                    <h3 class="item-title">{{__('lang.pages.signup.location')}}</h3>
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            City
+                           {{__('lang.pages.signup.city')}}
                             <span>*</span>
                         </label>
                     </div>
@@ -107,7 +108,7 @@ $lang_name="name_".app()->getLocale();
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Area
+                            {{__('lang.pages.signup.area')}}
                             <span>*</span>
                         </label>
                     </div>
@@ -125,7 +126,7 @@ $lang_name="name_".app()->getLocale();
                 <div class="row">
                     <div class="col-sm-3">
                         <label class="control-label">
-                            Adress
+                            {{__('lang.pages.signup.adress')}}
                         </label>
                     </div>
                     <div class="col-sm-9">
@@ -139,7 +140,7 @@ $lang_name="name_".app()->getLocale();
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input type="submit" class="submit-btn" value="Submit">
+                            <input type="submit" class="submit-btn" value="{{__('lang.pages.signup.submit_btn')}}">
                         </div>
                     </div>
                 </div>

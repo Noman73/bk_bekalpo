@@ -53,5 +53,6 @@ return [
     'allads'=>include('pages/allads.php'),
     'singlead'=>include('pages/singlead.php'),
     'post'=>include('pages/post.php'),
+    'mylist'=>include('pages/mylist.php'),
    ],
 ];

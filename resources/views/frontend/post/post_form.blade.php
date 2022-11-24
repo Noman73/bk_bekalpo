@@ -36,14 +36,21 @@ bekalpo.com | Easy Buy, Easy Sell
     <div class="container">
         <div class="post-ad-box-layout1 light-shadow-bg">
             <div class="post-ad-form light-box-content">
-                <div class="post-alert alert alert-success">You have more {{\App\Models\Post::where('status',2)->count()}} free ads.</div>
+                {{-- <div class="post-alert alert alert-success">You have more {{\App\Models\Post::where('status',2)->count()}} free ads.</div> --}}
                 <form onsubmit="return false" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="post-section post-type">
                         <div class="post-ad-title">
                             <i class="fa fa-tags"></i>
-                            <h3 class="item-title">@lang('lang.pages.post.select_type')</h3>
+                            <h3 class="item-title">
+                                @lang('lang.pages.post.select_type')
+                                <div  class="input-search-btn search-location d-inline ">
+                                    <i class="fa fa-map-marker-alt"></i>
+                                    <span id="locationModal">@lang('lang.pages.allads.location')</span>
+                                </div>
+                            </h3>
                         </div>
+
                         <div class="row">
                             <div class="col-sm-3">
                                 <label class="control-label">
@@ -80,7 +87,7 @@ bekalpo.com | Easy Buy, Easy Sell
                                         $lang_name=('name_'.app()->getLocale());
                                         @endphp
                                         @foreach($division as $div)
-                                        <option value="{{$div->id}}">{{$div->$lang_name}}</option>
+                                        <option value="{{$div->id}}" {{($div->id==auth()->user()->division_id) ? 'selected':''}}>{{$div->$lang_name}}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback" id="cities_msg">
@@ -288,7 +295,7 @@ bekalpo.com | Easy Buy, Easy Sell
                             </div>
                             <div class="col-sm-9">
                                 <div class="form-group">
-                                    <button onclick="formRequest()" type='submit' class="submit-btn" >{{__('lang.pages.post.fields.contact_details.submit_btn')}}</button>
+                                    <button onclick="formRequest()" type='submit' class="submit-btn" data-toggle="tooltip" data-placement="right" title="">{{__('lang.pages.post.fields.contact_details.submit_btn')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -297,6 +304,9 @@ bekalpo.com | Easy Buy, Easy Sell
                 
             </div>
         </div>
+    </div>
+    <div id="renderModal">
+
     </div>
 </section>
 @endsection

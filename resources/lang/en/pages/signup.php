@@ -19,6 +19,7 @@ return [
     'phone_place'=>'Enter Phone ',
     'password_place'=>'Enter Password ',
     'confirm_password_place'=>'Enter Confirm Password',
+    'submit_btn'=>"Submit",
 ];
 
 ?>

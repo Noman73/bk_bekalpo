@@ -28,7 +28,7 @@ class PostShowController extends Controller
     public function filter(Request $request){
 
         $params = $request->except('_token');
-        $posts=Post::with('permission','division','district','brand','model','images')->filter($params)->where('status',2)->orderBy('created_at','desc')->paginate(6);
+        $posts=Post::with('permission','division','district','brand','model','images')->filter($params)->where('status',2)->orderBy('created_at','desc')->paginate(20);
         return view('guest.allads.alladrender',compact('posts'))->render();
     }
 

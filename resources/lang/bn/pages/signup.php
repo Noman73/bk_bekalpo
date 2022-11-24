@@ -14,12 +14,12 @@ return [
     'male'=>"পুরুষ",
      'female'=>"মহিলা",
      'others'=>"অন্যান্য",
-
     'name_place'=>'নাম লিখুন ',
     'email_place'=>'ইমেইল লিখুন ',
     'phone_place'=>'ফোন নম্বর লিখুন ',
     'password_place'=>'একটি শক্ত পাসওয়ার্ড লিখুন ',
     'confirm_password_place'=>'পাসওয়ার্ড কনফার্ম করুন',
+    'submit_btn'=>"জমা দিন",
 ];
 
 ?>

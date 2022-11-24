@@ -35,11 +35,11 @@ $lang_name="name_".app()->getLocale();
     </div>
     <div class="product-list-view">
         <div class="list-view-layout1">
-            <div class="product-box-layout3 ">
+            <div class="product-box-layout3 mb-1">
                 <div class="item-img">
-                    <a href="{{URL::to('/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}" class=""><img style="width: 200px !important;height: 150px !important;object-fit: cover !important;object-position: 50% 50% !important;" src="{{asset('storage/post_image').'/'.(isset($post->images[0]->image) ? $post->images[0]->image : '' )}}" alt="Product"></a>
+                    <a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}" class=""><img style="width: 200px !important;height: 150px !important;object-fit: cover !important;object-position: 50% 50% !important;" src="{{asset('storage/post_image').'/'.(isset($post->images[0]->image) ? $post->images[0]->image : '' )}}" alt="Product"></a>
                 </div>
-                <div class="product-info">
+                <div class="product-info ">
                     <div class="item-content">
                         <h3 class="item-title"><a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}">{{$post->title}}</a></h3>
                         <ul class="item-condition">

@@ -4592,13 +4592,13 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 @media only screen and (max-width: 767px) {
     .product-box-layout3 .item-img a {
-        width: 7.5rem;
+        width: 10.5rem;
     }
 }
 
 @media only screen and (max-width: 479px) {
     .product-box-layout3 .item-img a {
-        width: 5.625rem;
+        width: 8.625rem;
     }
 }
 
@@ -6409,4 +6409,7 @@ a.item-trending:after {
 }
 .text-color{
     color:#083EF5 !important;
+}
+ .item-img{
+    df
 }

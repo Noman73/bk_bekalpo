@@ -14,6 +14,16 @@ bekalpo.com | Easy Buy, Easy Sell
     object-fit: cover !important;
     object-position: 50% 50% !important;
 }
+@media only screen and (max-width: 575) {
+    .product-box-layout3 .item-img{
+        width:200px !important;
+        height:150px !important;
+        object-fit: cover !important;
+        object-position: 50% 50% !important
+        border:1px solid red !important;
+    }
+}
+
 </style>
 @endsection
 @section('content')
@@ -503,4 +513,5 @@ bekalpo.com | Easy Buy, Easy Sell
 @endsection
 @section('script')
    @include('guest.allads.internal-assets.js.script');
+   
 @endsection

@@ -65,7 +65,6 @@ class PostController extends Controller
     {
         // return explode(',',$request->feature);
         // return response()->json($request->all());
-        Log::info('sdjkflkjlskdjf');
         ($request->has('price_type') ? $price_type='required' : $price_type='nullable');
         ($request->has('price') ? $price='required' : $price='nullable');
         ($request->has('condition') ? $condition='required' : $condition='nullable');
@@ -117,7 +116,7 @@ class PostController extends Controller
             'cities'=>"required|max:200|min:1",
             'areas'=>"required|max:200|min:1",
             'phones'=>["required","max:11","min:1",new phoneValidateRule],
-            'images'=>'required|array',
+            'images'=>'required|array|min:1|max:5',
             'images.*'=>'required|image|mimes:jpeg,png,jpg,svg|max:5120',
         ]);
         if($validator->passes()){
