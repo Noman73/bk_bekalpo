@@ -1,5 +1,6 @@
 @php
 use App\Http\Traits\Number;
+use Illuminate\Support\Str;
 $lang_name="name_".app()->getLocale();
 @endphp
 
@@ -12,7 +13,7 @@ $lang_name="name_".app()->getLocale();
     @endif
 @endif
 @foreach($posts as $post)
-<div class="col-xl-4 col-md-6 col-6" onclick="location='{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}'">
+<div class="col-xl-4 col-md-6 col-6" onclick="location='{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',Str::slug($post->title).'/'.$post->id)}}'">
     <div class="product-grid-view">
         <div class="grid-view-layout1">
             <div class="product-box-layout1 ">
@@ -20,7 +21,7 @@ $lang_name="name_".app()->getLocale();
                     <a href="{{URL::to('/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}" class=""><img style="width: 120px !important;height: 100px !important;object-fit: cover !important;object-position: 50% 50% !important;"  src="{{asset('storage/post_image').'/'.(isset($post->images[0]->image) ? $post->images[0]->image : '' )}}" alt="Product"></a>
                 </div>
                 <div class="item-content">
-                    <h3 class="item-title"><a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}">{{$post->title}}</a></h3>
+                    <h3 class="item-title"><a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',Str::slug($post->title).'/'.$post->id)}}">{{$post->title}}</a></h3>
                     <ul class="entry-meta">
                         <li><i class="far fa-clock"></i>{{$post->created_at->diffForHumans()}}</li>
                         <li><i class="fas fa-map-marker-alt"></i>{{$post->division->$lang_name}},{{$post->district->$lang_name}}</li>
@@ -37,11 +38,11 @@ $lang_name="name_".app()->getLocale();
         <div class="list-view-layout1">
             <div class="product-box-layout3 mb-1">
                 <div class="item-img">
-                    <a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}" class=""><img style="width: 200px !important;height: 150px !important;object-fit: cover !important;object-position: 50% 50% !important;" src="{{asset('storage/post_image').'/'.(isset($post->images[0]->image) ? $post->images[0]->image : '' )}}" alt="Product"></a>
+                    <a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',Str::slug($post->title).'/'.$post->id)}}" class=""><img style="width: 200px !important;height: 150px !important;object-fit: cover !important;object-position: 50% 50% !important;" src="{{asset('storage/post_image').'/'.(isset($post->images[0]->image) ? $post->images[0]->image : '' )}}" alt="Product"></a>
                 </div>
                 <div class="product-info ">
                     <div class="item-content">
-                        <h3 class="item-title"><a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',$post->title.'/'.$post->id)}}">{{$post->title}}</a></h3>
+                        <h3 class="item-title"><a href="{{URL::to(app()->getLocale().'/ad')}}/{{str_replace(' ','-',Str::slug($post->title).'/'.$post->id)}}">{{$post->title}}</a></h3>
                         <ul class="item-condition">
                             @if($post->condition!=null)
                             <li><span>@lang('lang.pages.allads.condition'):</span> {{($post->condition==1 ? __('lang.pages.allads.new') : __('lang.pages.allads.used'))}}</li>
