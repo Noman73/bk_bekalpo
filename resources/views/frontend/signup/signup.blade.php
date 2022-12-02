@@ -15,13 +15,13 @@
 @section('content')
 <div class="light-shadow-bg post-ad-box-layout1 myaccount-store-settings myaccount-detail">
     <div class="light-box-content">
-        @if($errors->any())
+        {{-- @if($errors->any())
         <ul>
             @foreach ($errors->all() as $error)
                 <li class="text-danger text-center">* {{ $error }}</li>
             @endforeach
         </ul>
-        @endif
+        @endif --}}
         <form action="{{URL::to(app()->getLocale().'/signup')}}" method="POST">
             @csrf
             <div class="post-section basic-information">
@@ -37,7 +37,10 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input type="text" placeholder="{{__('lang.pages.signup.name_place')}}" class="form-control" name="name" id="name" value="{{old('name')}}">
+                            <input type="text" placeholder="{{__('lang.pages.signup.name_place')}}" class="form-control {{($errors->has('name') ? 'is-invalid' : '')}}" name="name" id="name" value="{{old('name')}}">
+                            @if ($errors->has('name'))
+                                <div data-id="{{$errors->has('name')}}" class="invalid-feedback" id="name_msg">{{ $errors->first('name') }}</div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -67,8 +70,9 @@
                                         @lang('lang.pages.signup.others')
                                     </label>
                                 </div>
-                                <div class="invalid-feedback" id="gender_msg">
-                                </div>
+                                @if ($errors->has('gender'))
+                                <div data-id="{{$errors->has('gender')}}" class="invalid-feedback" id="gender_msg">{{ $errors->first('name') }}</div>
+                                @endif
                             </div>
                         </div>
                 </div>
@@ -81,7 +85,10 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input type="email" placeholder="{{__('lang.pages.signup.email_place')}}" class="form-control" name="email" id="email" value="{{old('email')}}">
+                            <input type="email" placeholder="{{__('lang.pages.signup.email_place')}}" class="form-control {{($errors->has('email') ? 'is-invalid' : '')}}" name="email" id="email" value="{{old('email')}}">
+                            @if ($errors->has('email'))
+                            <div data-id="{{$errors->has('email')}}" class="invalid-feedback" id="email_msg">{{ $errors->first('email') }}</div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -93,7 +100,10 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input type="text" placeholder="{{__('lang.pages.signup.phone_place')}}" class="form-control" name="phone" id="phone" value="{{old('phone')}}">
+                            <input type="text" placeholder="{{__('lang.pages.signup.phone_place')}}" class="form-control {{($errors->has('phone') ? 'is-invalid' : '')}}" name="phone" id="phone" value="{{old('phone')}}">
+                            @if ($errors->has('phone'))
+                            <div data-id="{{$errors->has('phone')}}" class="invalid-feedback" id="phone_msg">{{ $errors->first('phone') }}</div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -112,12 +122,15 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <select class="form-control select-box" name="cities" id="cities" value="{{old('cities')}}">
+                            <select class="form-control select-box {{($errors->has('cities') ? 'is-invalid' : '')}}" name="cities" id="cities" value="{{old('cities')}}">
                                 <option value="">{{__('lang.pages.allads.select_an_option')}}</option>
                                 @foreach($division as $div)
                                 <option value="{{$div->id}}">{{$div->$lang_name}}</option>
                                 @endforeach
                             </select>
+                            @if ($errors->has('cities'))
+                            <div data-id="{{$errors->has('cities')}}" class="invalid-feedback" id="cities_msg">{{ $errors->first('cities') }}</div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -130,9 +143,12 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <select class="form-control select-box" name="areas" id="areas" value="{{old('areas')}}">
+                            <select class="form-control select-box {{($errors->has('areas') ? 'is-invalid' : '')}}" name="areas" id="areas" value="{{old('areas')}}">
                                 <option value="">@lang('lang.pages.allads.select_an_option')</option>
                             </select>
+                            @if ($errors->has('areas'))
+                            <div data-id="{{$errors->has('areas')}}" class="invalid-feedback" id="areas_msg">{{ $errors->first('areas') }}</div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -144,7 +160,10 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <textarea name="adress" class="form-control textarea" id="adress" cols="30" rows="2" >{{old('adress')}}</textarea>
+                            <textarea name="adress" class="form-control textarea {{($errors->has('adress') ? 'is-invalid' : '')}}" id="adress" cols="30" rows="2" >{{old('adress')}}</textarea>
+                            @if ($errors->has('adress'))
+                            <div data-id="{{$errors->has('adress')}}" class="invalid-feedback" id="adress_msg">{{ $errors->first('adress') }}</div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -157,7 +176,10 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="form-group">
-                            <input class="form-control" type="password" id="password" placeholder="{{__('lang.pages.signup.password_place')}}" name="password">
+                            <input class="form-control {{($errors->has('adress') ? 'is-invalid' : '')}}" type="password" id="password" placeholder="{{__('lang.pages.signup.password_place')}}" name="password">
+                            @if ($errors->has('password'))
+                            <div data-id="{{$errors->has('password')}}" class="invalid-feedback" id="password_msg">{{ $errors->first('password') }}</div>
+                            @endif
                         </div>
                     </div>
                 </div>

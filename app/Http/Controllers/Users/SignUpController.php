@@ -63,7 +63,7 @@ class SignUpController extends Controller
             }
         }
         // return response()->json(['error'=>$validator->getMessageBag()]);
-        return redirect()->back()->withErrors($validator)->withInput($request->input());
+        return redirect()->back()->withErrors($validator)->withInput();
     }
     protected function guard()
     {

@@ -123,7 +123,11 @@
         compressed=false;
         if (formArr[val]!==undefined) {
             if(val=='images'){
+                if(formArr['images'].length==0){
+                    compressed=true;
+                }
                 for (let i = 0; i < formArr[val].length; i++) {
+                    
                     new Compressor(formArr[val][i],{
                         maxWidth:817.5,
                         maxHeight:500,
@@ -132,6 +136,7 @@
                         formData.append('images[]',result, result.name);
                         if(formArr[val].length===(i+1)){
                             compressed=true;
+                            console.log('compressed')
                         }
                     },
                     error(err) {
@@ -174,6 +179,9 @@
                 $('#'+d+'_msg').text(response.data.error[d][0]);
                 if(d=='fuel_type'){
                     $('#fuel_type_msg').show()
+                }
+                if(d=='images'){
+                    $('#images_msg').show()
                 }
                 if(d=='phones'){
                     $('#phones_msg').show()

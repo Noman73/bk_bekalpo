@@ -214,7 +214,8 @@ bekalpo.com | Easy Buy, Easy Sell
                         </div>
                         <div class="form-group">
                             {{-- <div class="input-images"></div> --}}
-                            <input type="text" id="demo3" value="">
+                            <input type="text" id="images" value="">
+                            <div class="invalid-feedback" id="images_msg"></div>
                         </div>
                     </div>
                     <div class="post-section post-contact">
@@ -347,7 +348,7 @@ let ajaxConfig = {
             }, 300)
         }
     }
-let imageData=$("#demo3").uploader({
+let imageData=$("#images").uploader({
         multiple: true,
         ajaxConfig: ajaxConfig
     });

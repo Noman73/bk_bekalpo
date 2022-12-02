@@ -150,7 +150,8 @@
         $(document).on('click','.login',function(){
             $('#loginModal').modal('show');
         })
-        if($('#login_email_msg').data('id')==1 || $('#login_password_msg').data('id')==1){
+        this_page_url="{{URL::to('/'.app()->getLocale().'/signup')}}";
+        if($(('#login_email_msg').data('id')==1 || $('#login_password_msg').data('id')==1) && window.location.href==this_page_url ){
             $('#loginModal').modal('show')
         }
         
